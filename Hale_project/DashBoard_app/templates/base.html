@@ -1,0 +1,235 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@600&display=swap');
+        </style>
+    <style>
+        a{
+            text-decoration: none;
+            font-size: large;
+            color: black;
+        }
+       a.nav_link:hover{
+       
+            background-color: blanchedalmond;
+        }
+        .nav_link{
+            padding: 12px;
+            padding-left: 20px;
+        }
+        .layout{
+            /* [body-cont] 950px */
+            display: grid;
+            grid-template-columns: [nav]180px  200px 200px 200px 200px 200px 200px;
+            /* border: 5px solid yellow; */
+            /* grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px; */
+        }
+        /* .nav{
+            /* grid-template-rows: 50px; */
+            /* text-decoration: none;
+        } */ 
+        button:hover {
+          background-color:rgb(158, 134, 103);
+}
+
+        .content{
+            
+            display:grid;
+             grid-template-columns: 200px 200px 200px 200px 200px 200px ;
+            /* grid-template-rows: 150px 150px 150px;  */
+            grid-column:2/13;
+            grid-row:1/13;
+            /* grid-template-columns: 950px; */
+            
+            /* height: 50px;
+            width: 50px; */
+            background-color:azure;
+            
+        }
+        .brand_name{
+            display:inline-block;
+            
+            margin-top: 0px;
+            margin-left: 40px;
+            font-family: 'Tektur', sans-serif;
+            font-size:40px;
+        }
+        .brandimg{
+            display: inline;
+        }
+        .titlebar {
+          display:flex;
+            height: 55px;
+            border: 3px solid aqua;
+            
+        }
+
+        .btns{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            width: 180px;
+            height: 50px;
+            background-color: antiquewhite;
+            text-decoration: none;
+            border-radius: 20px;
+        }
+        /* .nav_side{
+            background-color:tan;
+        } */
+        .footer{
+            background:aqua;
+            height: 61px;
+        }
+        /* .center_nav{
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+        } */
+        .center_nav1{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+            
+        }
+        .center_nav2{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav3{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav4{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav5{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav6{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav7{
+           
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav8{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav9{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav10{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav11{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav12{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .btns2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 30px;
+            margin-left: 50px;
+        }
+        .center_edit{
+            margin-left: 20px;
+        }
+        /* .nav_services{
+           
+            padding-left:20px;
+    } */
+    .nav_dist{
+        margin-left: 850px;
+    }
+        /* .btn22{
+            margin-left: 30px;
+        } */
+    </style>
+    <!-- <script>
+        function buttoncolor(name){
+            var btn = document.getElementsByClassName(name);
+            if (btn=='btn1'){
+                document.getElementsByName(name).style.backgroundColor='red'; 
+            }
+        }
+    </script> -->
+    
+</head>
+<body>
+    
+    <div class="titlebar">
+        <div><img src="{% static '/images/realbrand.png' %}" alt="brandlogo" height="50px" class="brandimg"></div>
+        <div><h3 class="brand_name">HALE</h3></div>
+        <div><h4 class="nav_services nav_dist" ><a href="" class="nav_link" >Services</a></h4></div>
+        <div><h4 class="nav_services"><a href="" class="nav_link">About</a></h4></div>
+        <div><h4 class="nav_services"><a href="" class="nav_link">Feedback</a></h4></div>
+        <div><h4 class="nav_services"><a href="" class="nav_link">Logout</a></h4></div>
+    </div>
+    <div class="layout">
+        <div class="nav_side">
+        <div class="nav"><a href=""><button class="btns btn1"  >Dashboard</button></a></div>
+        <div class="nav"><a href=""><button class="btns">Department</button></a></div>
+        <div class="nav"><a href=""><button class="btns">Doctor</button></a></div> 
+        <div class="nav"><a href=""><button class="btns">Patient</button></a></div>
+        <div class="nav"><a href=""><button class="btns">Nurse</button></a></div>
+        <div class="nav"><a href=""><button class="btns">Laboratorist</button></a></div>
+        <div class="nav"><a href=""><button class="btns">Accountant</button></a></div>
+        <div class="nav"><a href=""><button class="btns">View appointment</button></a></div>
+        <div class="nav"><a href=""><button class="btns">View payment</button></a></div>
+        <div class="nav"><a href=""><button class="btns">View bed status</button></a></div>
+        <div class="nav"><a href=""><button class="btns">View blood bank</button></a></div>
+        <div class="nav"><a href=""><button class="btns">View medicine</button></a></div>
+        
+    </div>
+        <div class="content">
+            <div class="center_nav1 center_edit"><a href=""><button class="btns2 btn22"><box-icon type='solid' name='dashboard'></box-icon>Dashboard</button></a></div>
+            <div class="center_nav2 center_edit"><a href=""><button class="btns2"><box-icon name='sitemap'></box-icon>Department</button></a></div>
+            <div class="center_nav3 center_edit"><a href=""><button class="btns2"><img src="{% static '/images/doctor.png' %}" alt="doctor" height="25px"><center>Doctor</center></button></a></div> 
+            <div class="center_nav4 center_edit"><a href=""><button class="btns2"><box-icon type='solid' name='user'></box-icon><center>Patient</center></button></a></div>
+            <div class="center_nav5 center_edit "><a href=""><button class="btns2"><box-icon name='female'></box-icon><center>Nurse</center></button></a></div>
+            <div class="center_nav6 center_edit"><a href=""><button class="btns2"><box-icon type='solid' name='flask'></box-icon>Laboratorist</button></a></div>
+            <div class="center_nav7 center_edit"><a href=""><button class="btns2 btn77"><box-icon name='money'></box-icon>Accountant</button></a></div>
+
+            <div class="center_nav8 center_edit "><a href=""><button class="btns2"><box-icon name='notepad'></box-icon><center>View appointment</center></button></a></div>
+            <div class="center_nav9  center_edit"><a href=""><button class="btns2"><box-icon name='credit-card'></box-icon><center>View payment</center></button></a></div>
+            <div class="center_nav10 center_edit"><a href=""><button class="btns2"><box-icon name='bed' ></box-icon><center>bed status</center> </button></a></div>
+            <div class="center_nav11 center_edit"><a href=""><button class="btns2"><box-icon name='donate-blood'></box-icon><center>blood bank</center></button></a></div>
+            <div class="center_nav12 center_edit"><a href=""><button class="btns2"><box-icon name='plus-medical'></box-icon> <center>medicine</center></button></a></div>
+            
+
+        </div>
+    </div>
+    <div class="footer"> footer</div>
+</body>
+</html>

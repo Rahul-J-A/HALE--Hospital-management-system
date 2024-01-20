@@ -1,0 +1,255 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Patient {% endblock %}</title>
+  {% block css %}
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <script>
+    
+  </script>
+  <style>
+
+    
+    *{
+        margin: 0px;
+        
+    }
+   .imag_box1{
+
+    /* margin: 50px 50px; */
+  /* grid-row: 2/2;*/
+  grid-column: 2/2;   
+}
+/*
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}*/
+.grid1{
+    color: azure;
+    background-color: darkslategray;
+    margin-left: 10px;
+    margin: 10px;
+    height: auto;
+    /* height: 590px;
+    width: 1250px; */
+    /* display: grid;
+    grid-template-columns: 400px 400px 500px ;
+     */
+   
+} 
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.btn_add{
+    color: aliceblue;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+/* .update{
+    margin-left: 700px;
+    margin-bottom: 10px;
+
+} */
+.delete{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.btn_update{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+.btn_delete{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+/* .update_section{
+    overflow: auto;
+} */
+/* div.scroll {
+ 
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+} */
+.datatable{
+    margin-left: 10px;
+}
+pre{
+    color: aliceblue;
+    font-size: 20px;
+
+}
+.table { border-collapse: collapse; }
+.tr { border: none; }
+.td {
+  border-right: solid 3px rgb(0, 0, 0); 
+  border-left: solid 3px rgb(0, 0, 0);
+}
+.td1{
+    border: solid 3px rgb(0, 0, 0); 
+ 
+}
+.update_btn{
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+.search_box{
+    margin-left: 10px;
+   position: absolute;
+   top:80px;
+   left: 700px;
+}
+.search{
+height: 35px;
+}
+</style>
+  
+  {% endblock %}
+  {% block java %}
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+{% if refresh_page %}
+    <script>
+      if (history.replaceState) {
+                var newUrl = window.location.href.split('?')[0];
+                history.replaceState(null, null, newUrl);
+            }
+        
+
+            // Remove the search parameter from the URL
+           
+    </script>
+{% endif %}
+
+
+<a href="{% url 'reg_patient' %}"><button type="button" class="btn_add" >New Registration</button></a>
+<a href="{% url 'reg_view_patient' %}"><button type="button" class="btn_add">View Registration</button></a>
+<form action="{% url 'reg_view_patient' %}" method="post">
+    {% csrf_token %}
+    <div class="search_box">
+        <input type="search"name="search"  class="search"placeholder="Search here" required>
+    <button type="submit" class="btn_add" >Search</button>
+    </div>
+    </form>
+<!-- <center style="color: red;">{{msg}}</center> -->
+
+<div class="grid1">
+    {% if msg %}
+<script>
+    alert('{{msg}}');
+</script>
+
+
+{% endif %}
+                <div id="view_reg">
+                    
+                            
+                    <form action=""  >
+                        <!-- {% csrf_token %} -->
+                       
+                    <center>
+                    <table   class="table" >
+                        
+                        <tr class="tr">
+                            <TH class="td1">DATE</TH>
+                            <th class="td1">NAME</th>
+                            <TH class="td1">AGE</TH>
+                            <TH class="td1">GENDER</TH>
+                            <TH class="td1">DIISCRIPTION</TH>
+                            <TH class="td1">PHONE NUMBER</TH>
+                            <TH class="td1">ADDRESS</TH>
+                            <TH class="td1">UPDATE</TH>
+                            <!-- onclick="event.preventDefault(); toggleShow();" -->
+                        
+                        </tr>
+                        <!-- searched data here -->
+                        {% for d in searched_data %}
+                    
+                    
+                        <tr class="tr">
+                            
+                            <td class="td"> <p style="font-weight: bold;">{{d.patient_reg_date}}</p><pre style="color: red; font-size: 15px;margin: 0px;padding: 0px; ">Searched </pre></td>
+                            <th class="td">   {{d.patient_name}}</th>
+                            <th class="td"> {{d.patient_age}}</th>
+                            
+                            <th class="td"> {{d.patient_gender}}</th>
+                        
+                            <th class="td">  {{d.patient_discription}}</th>
+                            <th class="td"> {{d.patient_phone}}</th>
+                            <th class="td">{{d.patient_address}}</th>
+                            <th class="td" ><center>
+                                {% if d.id %}
+                                <a href="{% url 'reg_update_patient' d.id %}" > <button class="update_btn " type="button">Update</button></a>
+                            {% else %}
+                                <!-- Handle the case where the ID is empty or not available -->
+                                <span>No ID available</span>
+                            {% endif %}
+                            </center></th>
+
+
+                        </tr>
+                        {% endfor %}
+                         <!-- searched data end  here -->
+                        {% for d in all_data %}
+                    
+                    
+                        <tr class="tr">
+                            <th class="td"> {{d.patient_reg_date}}</th>
+                            <th class="td">   {{d.patient_name}}</th>
+                            <th class="td"> {{d.patient_age}}</th>
+                            
+                            <th class="td"> {{d.patient_gender}}</th>
+                        
+                            <th class="td">  {{d.patient_discription}}</th>
+                            <th class="td"> {{d.patient_phone}}</th>
+                            <th class="td">{{d.patient_address}}</th>
+                            <th class="td" ><center>
+                                {% if d.id %}
+                                <a href="{% url 'reg_update_patient' d.id %}" > <button class="update_btn " type="button">Update</button></a>
+                            {% else %}
+                                <!-- Handle the case where the ID is empty or not available -->
+                                <span>No ID available</span>
+                            {% endif %}
+                            </center></th>
+
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    </center>
+
+
+
+                </form> 
+
+
+                </div>
+</div>            
+
+
+{% endblock %}
+</body>
+</html>

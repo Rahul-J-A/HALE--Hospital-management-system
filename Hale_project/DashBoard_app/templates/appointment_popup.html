@@ -1,0 +1,293 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Appointment_pop {% endblock %}</title>
+  {% block css %}
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <script>
+    function toggleShow(){
+        var x = document.getElementById("section_form");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+        }
+        else{
+            x.style.display = "none";
+        }    
+    }
+    
+  </script>
+  <style>
+    *{
+        margin: 0px;
+        
+    }
+   .imag_box1{
+
+    /* margin: 50px 50px; */
+  /* grid-row: 2/2;*/
+  grid-column: 2/2;   
+}
+/*
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}*/
+
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.btn_add{
+    color: aliceblue;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+.update{
+    margin-left: 700px;
+    margin-bottom: 10px;
+
+}
+.delete{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.btn_update{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+.btn_delete{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+/* .update_section{
+    overflow: auto;
+} */
+/* div.scroll {
+ 
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+} */
+.datatable{
+    margin-left: 10px;
+}
+/* #options_box{
+    width: 500px;
+} */
+#date{
+    
+    margin: 0px;
+    margin-left: 5px;
+    display: inline;
+}
+#datename{
+    display: inline;
+    margin-left: 600px
+}    
+.date_side{
+    border-bottom: 2px solid red ;
+    margin-bottom: 20px;
+}
+#popup_windowtitle{
+    background-color:  darkslategray;
+    margin: 10px;
+    padding-bottom: 20px;
+    
+    
+}
+.grid1{
+    color: azure;
+    background-color: rgb(74, 128, 128);
+    margin-left: 10px;
+    margin: 10px;
+    height: auto;
+    height: 530px;
+    /* position: relative; */
+    /* height: 590px;
+    width: 1250px; */
+    /* display: grid;
+    grid-template-columns: 400px 400px 500px ;
+     */
+   
+} 
+.appoint_box{
+    /* data box this is  */
+    /* position: absolute; */
+    background-color:darkslategray;
+    margin: 50px;
+    width: 900px;
+    padding: 50px;
+    border-radius: 30px;
+}
+.tableth-length{
+    width: 350px;
+    
+}
+.department{
+    width: 250px;
+}
+.makeAPT_btn{
+    border-radius: 30px;
+    background-color:darkslategray;
+    border: 2px solid red;
+    margin-left: 595px;
+    color: white;
+    width: 150px;
+    height: 30px;
+}
+.table_appoint{
+    width: 500px;
+   
+}
+</style>
+  
+  {% endblock %}
+  {% block java %}
+  <script>
+    
+</script>
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+
+
+        {% if msg %}
+                <script>
+                    alert('{{msg}}');
+                </script>
+                
+    
+        {% endif %}
+
+   
+    
+
+     <form action="" method="post">
+        {% csrf_token %}
+        <div class="popup_windows" id="popup_windowtitle">
+            <div><h3 style="color: white; font-weight: bold; font-family: 'Tektur', sans-serif ; margin: 10px; text-decoration: underline;">ADD APPOINTMENT </h3></div>
+    
+             <!-- for loop ondu markallu -->
+             <select name="select_patient"  class="select2">
+                <option value="none" >SELECT PATIENT</option>
+                {% for options in searched_data %}
+                <option value="{{options.id}}"><pre>&nabla;  Name: {{options.patient_name}}, Age: {{options.patient_age}}, Phone: {{options.patient_phone}} Gender: {{options.patient_gender}}</pre></option>
+                
+                
+                {% endfor %}
+                {% for options in patient_data %}
+                <option value="{{options.id}},{{appoint_detail.sec_doctor}}"><pre>Name: {{options.patient_name}}, Age: {{options.patient_age}}, Phone: {{options.patient_phone}} Gender: {{options.patient_gender}}</pre></option>
+                
+                
+                {% endfor %}
+
+            </select>
+            <button type="submit">ok</button>
+            <input type="search" name="search" ><input type="submit" value="search" >
+        </div>
+        </form>
+            
+           
+
+<!-- {% for data in appointed_patient %}
+{% if appointed_patient %}
+<script>
+alert("hi")
+
+</script>
+{% endif %}
+<h1>{{data.id}}</h1>
+{% endfor %} -->
+    
+    <div  class="grid1">
+
+{% for data in appointed_patient %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get today's date in the format YYYY-MM-DD
+        const today = new Date().toISOString().split('T')[0];
+        
+        // Get the element by ID
+        var dateElement = document.getElementById('date');
+        
+        // Check if the element is found
+        if (dateElement) {
+            // Append "hi" and today's date to the content
+            dateElement.textContent += today;
+        } else {
+            console.error("Element with ID 'date' not found");
+        }
+    });
+</script>
+<form action="{% url 'appointsave' data.id appoint_detail.id  %}" method="post">
+    {% csrf_token %}
+<div class="appoint_box" class="newgrid">
+            
+    <div class="date_side"><b>ID: {{data.id}}          <p id="datename"> DATE:</p> <p id="date"> </p></b></div>                                    
+          
+         <table cellpadding="2px" class="table_appoint" >       
+            <tr>
+
+                
+        <th>NAME: {{data.patient_name}}</th>
+        <th><div class="tableth-length"></div></th>
+      
+        
+        <th rowspan="4"><center><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id"></center></th>
+    </tr>
+    <tr>
+        <th>AGE:  {{data.patient_age}}</th>
+    </tr>
+    <tr>
+        <th>GENDER:   {{data.patient_gender}}</th>
+    </tr>
+    <tr>
+        <th>DISCRIPTION:  {{data.patient_discription}}</th>
+    </tr>
+    <tr>
+        <th>APPOINTED TO :  {{appoint_detail.sec_doctor}}</th>
+    </tr>
+    <tr>
+        <th><div class="department">DEPARTMENT :  {{appoint_detail.sec_department}}</div></th>
+    </tr>
+    <tr>
+        <th>OP NO :  {{appoint_detail.sec_op_no}}</th>
+    </tr>
+    <tr>
+        
+        <th colspan="3"><div class="tableth-length"><button type="submit" class="makeAPT_btn" style="border: 2px solid red;" ><pre style="font-weight: bold; color: aliceblue;">Make Appointment</pre></button></div></th>
+
+        <!-- <th colspan="3"><div class="tableth-length"><button type="submit" class="makeAPT_btn" ><pre style="font-weight: bold; color: aliceblue;">Make Appointment</pre></button></div></th> -->
+    </tr>
+    
+         </table>
+
+{% endfor %}
+
+
+
+</div>
+</form>
+</div>
+{% endblock %}
+
+</body>
+</html>
+

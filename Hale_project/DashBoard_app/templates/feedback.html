@@ -1,0 +1,100 @@
+
+{% extends "topnav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |Feedback {% endblock %}</title>
+
+
+
+{% block css %}
+<style>
+    .imag_box1{
+        margin: 50px 50px;
+      grid-row: 1/2;
+      grid-column: 1/2;  
+     
+    }
+    
+    .image_1_dis{
+        margin-top: 20px;
+        color: aliceblue;
+       grid-column: 2/3;
+    }
+    .grid1{
+        background-color: darkslategray;
+        margin: 10px;
+        display: grid;
+        grid-template-columns: 800px  400px ;
+        grid-template-rows: 450px;
+        
+       
+    }
+    #feedbackForm {
+
+        margin-bottom: 30px;
+    }
+    #feed_btn{
+            background:#98adb8;
+        }
+        body{
+    
+   
+    background-color: rgb(110, 150, 150);
+}
+#brand_moto{
+    margin-top: 10px;
+   
+    color: aliceblue;
+    font-family: 'Tektur', sans-serif;
+}
+
+</style>
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div  class="grid1">
+        <div class="imag_box1">
+            <center><div><img src="{% static '/images/hale.png' %}" alt="brandlogo" height="200px" class="brandimg"></div>
+            <!-- <img src="{% static '/images/istockphoto-1298375809-612x612.jpg'%}" alt="img1" height="400px"> -->
+            <p id="brand_moto"><b>TRUSTED HEALTH AND WELFARE BRANCH</b></p>
+        <p id="brand_moto">Thank you for the valueable time</p>
+        <p id="brand_moto">This system likely aims to establish a reliable and secure healthcare environment where patients can place their trust in the quality of services provided. The term "Welfare Branch" implies a comprehensive approach to healthcare, focusing not only on medical treatment but also on the broader well-being and welfare of individuals..</p></center>
+            
+        </div>
+        <div class="image_1_dis">
+            <center><h3 id="feedback_title"><B>Feedback </B></h3></center>
+            <table cellpadding="10">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <tr>
+                   <th> <label for="">NAME:</label></th>
+                    <td><input type="text" name="name"placeholder="typehere"size="40"Required ></td>
+                </tr>
+                <tr>
+                    <th><label for="">Email:</label></th>
+                    <td><input type="email" name="email"placeholder="typehere" size="40"Required ></td>
+                </tr>
+                <tr>
+                    <th><label for="">message:</label></th>
+                    <td><textarea name="message" placeholder="typehere"Required id="message" cols="43" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <!-- <th></th> -->
+                   <th> <button type="submit"id="feed_btn">submit</button></th>
+                </tr>
+                </form>
+            </table>
+        </div>
+</div>
+    
+    
+
+    {% endblock %}
+</body>
+</html>

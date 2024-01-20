@@ -1,0 +1,186 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Patient {% endblock %}</title>
+  {% block css %}
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <script>
+   
+  </script>
+  <style>
+
+    *{
+        margin: 0px;
+        
+    }
+   .imag_box1{
+
+    /* margin: 50px 50px; */
+  /* grid-row: 2/2;*/
+  grid-column: 2/2;   
+}
+/*
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}*/
+.grid1{
+    color: azure;
+    background-color: darkslategray;
+    margin-left: 10px;
+    margin: 10px;
+    height: auto;
+    /* height: 590px;
+    width: 1250px; */
+    /* display: grid;
+    grid-template-columns: 400px 400px 500px ;
+     */
+   
+} 
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.btn_add{
+    color: aliceblue;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+/* .update{
+    margin-left: 700px;
+    margin-bottom: 10px;
+
+} */
+.delete{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.btn_update{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+.btn_delete{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+/* .update_section{
+    overflow: auto;
+} */
+/* div.scroll {
+ 
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+} */
+.datatable{
+    margin-left: 10px;
+}
+pre{
+    color: aliceblue;
+    font-size: 20px;
+
+}
+.table { border-collapse: collapse; }
+.tr { border: none; }
+.td {
+  border-right: solid 2px rgb(0, 0, 0); 
+  border-left: solid 2px rgb(0, 0, 0);
+}
+.update_btn{
+    border-radius: 30px;
+    margin-top: 20px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+
+</style>
+  
+  {% endblock %}
+  {% block java %}
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+
+
+<a href="{% url 'reg_patient' %}"><button type="button" class="btn_add" >New Registration</button></a>
+<a href="{% url 'reg_view_patient' %}"><button type="button" class="btn_add">View Registration</button></a>
+<div class="grid1">
+        {% if msg %}
+    <script>
+        alert('{{msg}}');
+    </script>
+    
+    
+    {% endif %}
+
+        <!-- <h3 style="color: red;">{{msg}}</h3> -->
+           
+    <div id="popup_window">
+        <form action="" method="post" >
+            {% csrf_token %}
+            
+            <table cellpadding="20px" >
+                <tr>
+                    
+                <th><pre>Name:  <input type="text" name="hname"value="{{data.patient_name}}"></pre>   </th>
+                <th><pre>Age:  <input type="number" name="hage"value="{{data.patient_age}}"></pre>   </th>
+                <th>
+                    <label for="gender">Gender: &nbsp</label>
+                    <input type="radio" id="male" name="hgender" value="male" {% if data.patient_gender == 'male' %}checked{% endif %} required>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="hgender" value="Female" {% if data.patient_gender == 'Female' %}checked{% endif %} required>
+                    <label for="female">Female</label>
+
+            
+                    </th>
+                    <tr>
+
+                        <th><pre><label for="">PhoneNumber: </label> <input type="number" name="hphone_no" id=""value="{{data.patient_phone}}"></pre></th>
+                        <th > 
+                            <textarea rows= "4" cols="40" name="haddress" placeholder="enter Address" >{{data.patient_address}}</textarea></th>
+                        
+                    <th > 
+                    <textarea rows= "4" cols="40" name="hdiscription" placeholder="enter disciption" >{{data.patient_discription}}</textarea></th>
+                    </tr>
+                <tr>
+
+                    <th><pre><button type="submit" >Save</button>   <a href="reg_update"><button type="button">Cancel</button></a></pre></th>
+                    
+                </tr>
+
+
+
+
+
+
+            </table>
+
+
+
+
+
+        </form>
+    </div>
+    
+</div>
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,259 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Doctor {% endblock %}</title>
+  {% block css %}
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <script>
+    function toggleShow(){
+        var x = document.getElementById("section_form");
+        var y= document.getElementById("appoint_view");
+        var z = document.getElementById("appoint_box");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+            y.style.display = "none"
+            z.style.display = "none"
+        }
+        else{
+            x.style.display = "none";
+        }    
+        
+    }
+    
+  </script>
+  <style>
+    /* #section_form{
+        display: none;
+    } */
+    *{
+        margin: 0px;
+        
+    }
+   .imag_box1{
+
+    /* margin: 50px 50px; */
+  /* grid-row: 2/2;*/
+  grid-column: 2/2;   
+}
+/*
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}*/
+.grid1{
+    color: azure;
+    background-color: darkslategray;
+    margin-left: 10px;
+    margin: 10px;
+    height: auto;
+    /* height: 590px;
+    width: 1250px; */
+    /* display: grid;
+    grid-template-columns: 400px 400px 500px ;
+     */
+   
+} 
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.btn_add1{
+    color: aliceblue;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+.btn_add{
+    color: aliceblue;
+    font-weight: bold;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+.update{
+    margin-left: 500px;
+    margin-bottom: 10px;
+
+}
+.delete{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.btn_update{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+.btn_delete{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+/* .update_section{
+    overflow: auto;
+} */
+/* div.scroll {
+ 
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+} */
+.datatable{
+    margin-left: 10px;
+}
+.thspace{
+    width: 403px;
+}
+</style>
+  
+  {% endblock %}
+  {% block java %}
+  {% if checked %}
+<script>
+   var button = document.getElementById('clickme');
+
+// Check if the button element exists
+if (button) {
+    // Trigger a click on the button
+    button.click();
+}
+</script>
+
+
+{% endif %}
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+<!-- 
+<div  class="grid1">
+    <div class="imag_box1">
+        <img src="{% static '/images/istockphoto-1298375809-612x612.jpg'%}" alt="img1" height="400px">
+      
+        
+    </div>
+    <div class="image_1_dis">
+        <center><h3><B>WELL INFRASTRUCTURE</B></h3></center>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At et temporibus maiores similique quos eos obcaecati cum? Cum ad unde, optio laboriosam atque nihil a, magni, delectus porro omnis suscipit!</p>
+    </div>
+    
+</div> -->
+<button type="button" class="btn_add1"id="showupdate" onclick="toggleShow()">Add Section</button>
+<a href="{% url 'recievedappointmentsmark' %}"><button type="button" class="btn_add"id="showupdate" >Received Appointments</button></a>
+<!-- url is for going to recievedappointments html page and for marking appointment -->
+<div class="grid1">
+    {% if msg %}
+        <script>
+            alert('{{msg}}');
+        </script>
+    {% endif %}
+
+    
+
+    <div id="section_form">
+        <form action="" method="post" id="addForm">
+            {% csrf_token %}
+            <table cellpadding="20px" >
+                <tr>
+                    <th id="date"  ><span>Date:  <input type="date" name="date" id="dateInput" value="{{ up_val.sec_date|date:'Y-m-d' }}"></span></th>
+                    <script>
+                        const today = new Date().toISOString().split('T')[0];
+                        dateinput = document.getElementById('dateInput')
+                        if (!dateinput.value) {
+                            dateInput.value = today;
+                        }
+                    </script>
+                    <td></td>
+                    <th>Duration:</th>
+                    <th><span><input type="time" name="duration1" value="{{ up_val.sec_duration1|time:'H:i' }}" required>
+                            Till <input type="time" name="duration2" value= "{{ up_val.sec_duration2|time:'H:i' }}" required></span></th>
+                </tr>
+                <tr>
+                    <th>
+                        <select name="departments" id="departments" required>
+                            <option value="" {% if not up_val.sec_department %}selected{% endif %} disabled>DEPARTMENT</option>
+                            <option value="general" {% if up_val.sec_department == 'general' %}selected{% endif %}>General</option>
+                            <option value="Operation Theater" {% if up_val.sec_department == 'Operation Theater' %}selected{% endif %}>Operation Theater</option>
+                            <option value="Emergency service" {% if up_val.sec_department == 'Emergency service' %}selected{% endif %}>Emergency service</option>
+                            <option value="Speciality clinic" {% if up_val.sec_department == 'Speciality clinic' %}selected{% endif %}>Speciality clinic</option>
+                            <option value="Dialysis unit" {% if up_val.sec_department == 'Dialysis unit' %}selected{% endif %}>Dialysis unit</option>
+                            <option value="Labour Room" {% if up_val.sec_department == 'Labour Room' %}selected{% endif %}>Labour Room</option>
+                        </select>
+                    </th>
+                    <th><span>OP NO: <input type="number" style="width: 50px;" name="op_no" value="{{up_val.sec_op_no}}" required></span></th>
+                    <th>SectionBreak: </th>
+                    <th><span><input type="time" name="break1" value="{{ up_val.sec_break1|time:'H:i' }}" > <b> Till </b> <input type="time" name="break2" value="{{ up_val.sec_break2|time:'H:i' }}" required> </span></th>
+                </tr>
+                <tr>
+                    <th><button type="submit" >Save</button></th>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+{% for saved_data1 in saved_data%}
+ 
+   
+    
+
+    <div class="grid1 " id="update_section">
+        <form action="" method="post">
+            {% csrf_token %}
+        <table class="datatable" cellpadding="20px" >
+                <tr>
+                    <th class="thspace"><span>DATE:   {{saved_data1.sec_date}}</span></th>
+                    <th><span>DURATION:   {{saved_data1.sec_duration1}}  Till  {{saved_data1.sec_duration2}}</span></th>
+                    
+                
+                </tr>
+                <tr>
+                    <th><span>NAME:  {{saved_data1.sec_doctor}}</span></th></tr>
+                <tr>
+                    <th><span>DEPARTMENT:   {{saved_data1.sec_department}}</span></th>
+                    <th><span>OP NUMBER:   {{saved_data1.sec_op_no}}</span></th>
+
+
+
+                </tr>
+                <tr>
+                    <th><span>SECTION BREAK:   {{saved_data1.sec_break1}}  Till  {{saved_data1.sec_break2}}</span></th>
+                <th> <div class="update">
+                       
+                        <a href="{% url 'update' saved_data1.id  %}" >
+                            <button type="button" class="btn_update">Update</button>
+                        </a>
+                   </div>
+
+                </th>
+                <th> <div class="delete">
+                    
+                    <a href="{% url 'delete' saved_data1.id  %}" ><button type="button" class="btn_delete">Delete</button></a>
+                </div>
+                
+            </th>
+                </tr>
+
+            </table>
+        </form>
+        </div>
+
+{% endfor %}
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,151 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Dashboard {% endblock %}</title>
+  {% block css %}
+  <style>
+   body{
+    background-color: #52796f;
+   }
+   .center_edit{
+            margin-left: 20px;
+        }
+  .content{
+    
+   
+    display:grid;
+    width: 1250px;
+             grid-template-columns: 200px 200px 200px 200px 200px 200px ;
+            grid-template-rows: 250px ; 
+            grid-column:2/13;
+            grid-row:1/13;
+            /* grid-template-columns: 950px; */
+            
+            /* height: 50px;
+            width: 50px; */
+            background-color: #52796f;
+  }
+  .center_nav1{
+            width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+            
+        }
+        .center_nav2{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav3{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav4{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav5{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav6{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav7{
+           
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav8{
+            width: 100px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav9{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav10{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav11{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .center_nav12{
+          width: 140px;
+            height: 100px;
+            /* background-color: aquamarine; */
+        }
+        .btns2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 30px;
+            margin-left: 50px;
+        }
+        .btns2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 50px;
+            width: 140px;
+            height: 100px;
+            border-radius: 30px;
+            margin-left: 50px;
+        }
+        .btns2:hover{
+          background-color:#AAD9BB
+        }
+        .activate{
+          background-color: darkslategray;
+        }
+</style>
+  
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+<div class="content_container">
+  
+    <div class="content">
+      <div class="center_nav1 center_edit"><a href="admin"><button class="btns2 btn22{% if request.path == '/admin' %} active {% endif %}"><box-icon type='solid' name='dashboard'></box-icon><center>Dashboard</center></button></a></div>
+      <div class="center_nav2 center_edit"><a href=""><button class="btns2{% if request.path == '/department' %} active {% endif %}"><box-icon name='sitemap'></box-icon><center>Department</center></button></a></div>
+      <div class="center_nav3 center_edit"><a href="doctor"><button class="btns2{% if request.path == '/doctor' %} active {% endif %}"><img src="{% static '\images\doctor.png' %}" alt="doctor" height="25px"><center>Doctor</center></button></a></div> 
+      <div class="center_nav4 center_edit"><a href="patient"><button class="btns2{% if request.path == '/patient' %} active {% endif %}"><box-icon type='solid' name='user'></box-icon><center>Patient</center></button></a></div>
+      <div class="center_nav5 center_edit "><a href=""><button class="btns2{% if request.path == '/nurse' %} active {% endif %}"><box-icon name='female'></box-icon><center>Nurse</center></button></a></div>
+      <div class="center_nav6 center_edit"><a href=""><button class="btns2{% if request.path == '/Laboratorist' %} active {% endif %}"><box-icon type='solid' name='flask'></box-icon><center>Laboratorist</center></button></a></div>
+      <div class="center_nav7 center_edit"><a href=""><button class="btns2 btn77"><box-icon name='money'></box-icon><center>Accountant</center></button></a></div>
+
+      <div class="center_nav8 center_edit "><a href=""><button class="btns2{% if request.path == '/viewappointment' %} active {% endif %}"><box-icon name='notepad'></box-icon><center>View appointment</center></button></a></div>
+      <div class="center_nav9  center_edit"><a href=""><button class="btns2{% if request.path == '/viewpayment' %} active {% endif %}"><box-icon name='credit-card'></box-icon><center>View payment</center></button></a></div>
+      <div class="center_nav10 center_edit"><a href=""><button class="btns2{% if request.path == '/bedstatus' %} active {% endif %}"><box-icon name='bed' ></box-icon><center>Bed status</center> </button></a></div>
+      <div class="center_nav11 center_edit"><a href=""><button class="btns2{% if request.path == '/bloodbank' %} active {% endif %}"><box-icon name='donate-blood'></box-icon><center>Blood bank</center></button></a></div>
+      <div class="center_nav12 center_edit"><a href=""><button class="btns2{% if request.path == '/Medicine' %} active {% endif %}"><box-icon name='plus-medical'></box-icon> <center>Medicine</center></button></a></div>
+      
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
+</body>
+</html>
+

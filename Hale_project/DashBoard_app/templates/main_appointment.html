@@ -1,0 +1,284 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Main Appointment {% endblock %}</title>
+  {% block css %}
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <script>
+    function toggleShow(){
+        
+        var x = document.getElementById("popup_window");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+        }
+        else{
+            x.style.display = "none";
+        }    
+    }
+  </script>
+  <style>
+    *{
+        margin: 0px;
+        
+    }
+   .imag_box1{
+
+    /* margin: 50px 50px; */
+  /* grid-row: 2/2;*/
+  grid-column: 2/2;   
+}
+/*
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}*/
+.grid1{
+    color: azure;
+    background-color: darkslategray;
+    margin-left: 10px;
+    margin: 10px;
+    height: auto;
+    padding-top: 10px;
+    
+    
+    /* border: 2px solid red; */
+    /* height: 590px;
+    width: 1250px; */
+    /* display: grid;
+    grid-template-columns: 400px 400px 500px ;
+     */
+   
+} 
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.btn_add{
+    color: aliceblue;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+/* .add_appoint{
+    margin-left: 700px;
+    margin-bottom: 10px;
+
+} */
+/*  */
+.btn_appoint1{
+    margin-top: 20px;
+    margin-left: 1000px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    color: aliceblue;
+    font-weight: bold;
+}
+.btn_appoint{
+    border-radius: 30px;
+    /* background-color: rgb(74, 128, 128); */
+    background-color: darkslategray;
+    color: aliceblue;
+    font-weight: bold;
+}
+/* .update_section{
+    margin-top: 10px;
+   
+} */
+/* div.scroll {
+ 
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+} */
+.datatable{
+    
+    margin-left: 10px;
+    
+}
+.doctor_id{
+    background-color: rgb(74, 128, 128);
+    border-radius: 10px;
+    padding:0px;
+    margin-left: 150px;
+}
+pre{
+    color: aliceblue;
+    font-size: 20px;
+}
+.search_box{
+    margin-left: 10px;
+}
+.popup_windows{
+    position: fixed;
+   
+display: none;
+  width: 900px;
+  /* border: 3px solid #73AD21; */
+
+    left: 400px;
+    top: 100px;
+    /* background-color: transparent; */
+    /* opacity: 0.5; */
+    height: 550px;
+    background-color: darkslategray;
+}
+/* #popup_window{
+   
+} */
+</style>
+  
+  {% endblock %}
+  {% block java %}
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+<!-- {% if refresh_page %}
+    <script>
+     
+        
+
+            // Remove the search parameter from the URL
+            if (history.replaceState) {
+                var newUrl = window.location.href.split('?')[0];
+                history.replaceState(null, null, newUrl);
+            }
+    </script>
+{% endif %} -->
+
+
+
+
+
+
+
+
+
+
+<form action="{% url 'appointment' %}" method="post">
+    {% csrf_token %}
+<div class="search_box">
+    <input type="search"name="search" placeholder="Search here" required>
+<button type="submit" class="btn_add" >Search</button>
+</div>
+</form>
+    <div class="grid1">
+        {% if msg %}
+    <script>
+        alert('{{msg}}');
+    </script>
+    
+    
+{% endif %}
+
+  
+{% for appoint_detail in searched_value %}
+        
+        <div class="grid1 " id="update_section">
+           
+            <form action="" >
+                {% csrf_token %}
+            <table class="datatable" cellpadding="10px"  style="border: 2px solid red; " >
+                <tr>
+                    <td><p style="color: red;">searched</p></td>
+                </tr>
+                    <tr>
+                        <th><pre> DATE:  {{appoint_detail.sec_date}}</pre> </th>
+                        <th><pre> DURATION: {{appoint_detail.sec_duration1}}  Till  {{appoint_detail.sec_duration2}}</pre> </th>
+                        
+                    <th rowspan="5"><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id" ></th>
+                    </tr>
+                    <tr>
+                        <th><pre> NAME: {{appoint_detail.sec_doctor}}</pre> </th></tr>
+                    <tr>
+                        <th><pre> DEPARTMENT:  {{appoint_detail.sec_department}}</pre> </th>
+                        <th><pre> OP NUMBER:  {{appoint_detail.sec_op_no}}</pre> </th>
+
+
+
+                    </tr>
+                    <tr>
+                        <th><pre> SECTION BREAK: {{appoint_detail.sec_break1}} Till {{appoint_detail.sec_break2}}</pre> </th>
+                    
+
+                    </th>
+                    
+                    </tr>
+                    <tr><th colspan="3"> <div class="btn_appoint1">
+                    
+                        
+                       <a href="{% url 'add_appoint' appoint_detail.id  %}"> <button type="button" class="btn_appoint" style="border: 2px solid red;">Add Appointment</button></a>
+                    </div></tr>
+
+                </table>
+            </form>
+          
+
+     </div>
+         
+     {% endfor %}
+           
+
+        
+    
+  
+{% for appoint_detail in appoint_detail %}
+        
+        <div class="grid1 " id="update_section">
+           
+            <form action="" >
+                {% csrf_token %}
+            <table class="datatable" cellpadding="10px"  style="border: 2px solid red; " >
+                    <tr>
+                        <th><pre> DATE:  {{appoint_detail.sec_date}}</pre> </th>
+                        <th><pre> DURATION: {{appoint_detail.sec_duration1}}  Till  {{appoint_detail.sec_duration2}}</pre> </th>
+                        
+                    <th rowspan="5"><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id" ></th>
+                    </tr>
+                    <tr>
+                        <th><pre> NAME: {{appoint_detail.sec_doctor}}</pre> </th></tr>
+                    <tr>
+                        <th><pre> DEPARTMENT:  {{appoint_detail.sec_department}}</pre> </th>
+                        <th><pre> OP NUMBER:  {{appoint_detail.sec_op_no}}</pre> </th>
+
+
+
+                    </tr>
+                    <tr>
+                        <th><pre> SECTION BREAK: {{appoint_detail.sec_break1}} Till {{appoint_detail.sec_break2}}</pre> </th>
+                    
+
+                    </th>
+                    
+                    </tr>
+                    <tr><th colspan="3"> <div class="btn_appoint1">
+                    
+                        
+                       <a href="{% url 'add_appoint' appoint_detail.id  %}"> <button type="button" class="btn_appoint" style="border: 2px solid red;">Add Appointment</button></a>
+                    </div></tr>
+
+                </table>
+            </form>
+          
+
+     </div>
+         
+     {% endfor %}
+                <!-- popup  -->
+
+ </div>    
+
+{% endblock %}
+</body>
+</html>
+

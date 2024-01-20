@@ -1,0 +1,131 @@
+
+{% extends "topnav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |About {% endblock %}</title>
+    {%  block css %}
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+.imag_box1{
+    margin: 50px 50px;
+  grid-row: 1/2;
+  grid-column: 1/2;  
+}
+
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}
+.grid1{
+    background-color: darkslategray;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 400px 400px 500px ;
+    
+   
+}
+.grid2{
+    background-color: darkslategray;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 500px 400px 400px;
+   
+}   
+.grid3{
+    background-color: darkslategray;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+   
+}   
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.imag_box2{
+   
+    margin: 50px 50px;
+  grid-row: 1/2;
+  grid-column: 2/3;  
+}
+
+.image_2_dis{
+    margin-left: 50px;
+    margin-top: 160px;
+    color: aliceblue;
+    grid-row: 1/2;
+   grid-column: 1/2;
+}
+
+.imag_box3{
+    margin: 50px 50px;
+  grid-row: 1/2;
+  grid-column: 1/2;  
+}
+
+.image_3_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}
+</style>
+
+
+
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+ <div  class="grid1">
+                <div class="imag_box1">
+                    <img src="{% static '/images/istockphoto-1298375809-612x612.jpg'%}" alt="img1" height="400px">
+                    <!-- <box-icon name='current-location'></box-icon> -->
+                    
+                </div>
+                <div class="image_1_dis">
+                    <center><h3><B>WELL INFRASTRUCTURE</B></h3></center>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At et temporibus maiores similique quos eos obcaecati cum? Cum ad unde, optio laboriosam atque nihil a, magni, delectus porro omnis suscipit!</p>
+                </div>
+                <!-- <div class="image_2_dis">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, pariatur.</p>
+                </div> -->
+</div>
+
+<div class="grid2">
+
+        <div class="imag_box2">
+            <img src="{% static '/images/HT-uhs-1 hospital imag3.jpg'%}" alt="img1" height="300px">
+            
+            
+        </div>
+        <div class="image_2_dis">
+            <center><h3><B>ADVANCE TECHNOLOGY</B></h3></center>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At et temporibus maiores similique quos eos obcaecati cum? Cum ad unde, optio laboriosam atque nihil a, magni, delectus porro omnis suscipit!</p>
+        </div>
+    </div>
+
+
+<div class="grid3">
+
+        <div class="imag_box3">
+            <img src="{% static '/images/doctor_about.jpg'%}" alt="img1" height="300px">
+            
+            
+        </div>
+        <div class="image_3_dis">
+            <center><h3><B>MEDICAL MAESTROS</B></h3></center>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At et temporibus maiores similique quos eos obcaecati cum? Cum ad unde, optio laboriosam atque nihil a, magni, delectus porro omnis suscipit!</p>
+        </div>
+</div>    
+    {% endblock %}
+</body>
+</html>

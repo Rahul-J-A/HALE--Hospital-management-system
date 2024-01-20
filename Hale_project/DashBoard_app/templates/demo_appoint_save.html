@@ -1,0 +1,205 @@
+{% extends "nav.html " %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Appointment_demo {% endblock %}</title>
+  {% block css %}
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
+  <script>
+    setTimeout(function() {
+        var appointmentUrl = "{% url 'appointment' %}";
+        window.location.href = appointmentUrl; // Redirect to the 'appointment' page after 3 seconds
+    }, 2000);
+
+    function toggleShow(){
+        var x = document.getElementById("section_form");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+        }
+        else{
+            x.style.display = "none";
+        }    
+    }
+    
+  </script>
+  <style>
+    *{
+        margin: 0px;
+        
+    }
+   .imag_box1{
+
+    /* margin: 50px 50px; */
+  /* grid-row: 2/2;*/
+  grid-column: 2/2;   
+}
+/*
+.image_1_dis{
+    margin-top: 200px;
+    color: aliceblue;
+   grid-column: 3/3;
+}*/
+
+body{
+    /* background-image: url("{% static '\images\rotate_bgimg.jpg' %}"); */
+   
+    background-color: rgb(74, 128, 128);
+}
+.btn_add{
+    color: aliceblue;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: darkslategray ;
+    border-radius: 30px;
+}
+.update{
+    margin-left: 700px;
+    margin-bottom: 10px;
+
+}
+.delete{
+    margin-left: 50px;
+    margin-bottom: 10px;
+}
+.btn_update{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+.btn_delete{
+    border-radius: 30px;
+    background-color: rgb(74, 128, 128);
+    color: aliceblue;
+    font-weight: bold;
+}
+/* .update_section{
+    overflow: auto;
+} */
+/* div.scroll {
+ 
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+} */
+.datatable{
+    margin-left: 10px;
+}
+/* #options_box{
+    width: 500px;
+} */
+#date{
+    
+    margin: 0px;
+    margin-left: 5px;
+    display: inline;
+}
+#datename{
+    display: inline;
+    margin-left: 600px
+}    
+.date_side{
+    border-bottom: 2px solid red ;
+    margin-bottom: 20px;
+}
+#popup_windowtitle{
+    background-color:  darkslategray;
+    margin: 10px;
+    padding-bottom: 20px;
+    
+    
+}
+.grid1{
+    color: azure;
+    background-color: rgb(74, 128, 128);
+    margin-left: 10px;
+    margin: 10px;
+    height: auto;
+    height: 530px;
+    /* position: relative; */
+    /* height: 590px;
+    width: 1250px; */
+    /* display: grid;
+    grid-template-columns: 400px 400px 500px ;
+     */
+   
+} 
+.appoint_box{
+    /* data box this is  */
+    /* position: absolute; */
+    background-color:darkslategray;
+    margin: 50px;
+    width: 900px;
+    padding: 50px;
+    border-radius: 30px;
+}
+/* .tableth-length{
+    width: 350px;
+    
+} */
+
+.department{
+    width: 250px;
+}
+.makeAPT_btn{
+    border-radius: 30px;
+    background-color:darkslategray;
+    border: 2px solid red;
+    margin-left: 595px;
+    color: white;
+    width: 150px;
+    height: 30px;
+}
+.table_appoint{
+    width: 500px;
+   
+}
+</style>
+  
+  {% endblock %}
+  {% block java %}
+  <script>
+    
+</script>
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+
+
+        {% if msg %}
+                <script>
+                    alert('{{msg}}');
+                </script>
+                
+    
+        {% endif %}
+
+   
+    
+
+     
+
+    
+    <div  class="grid1">
+
+<h1 style="color: red; font-weight: bold;">APPOINTMENT BOOKED</h1>
+
+
+
+</div>
+
+</div>
+{% endblock %}
+
+</body>
+</html>
+
