@@ -73,19 +73,25 @@ graph TD
 ```
 
 ---
+ 
+## 📸 Screen Gallery
 
-## 📸 Screenshots
+Here is a walkthrough of HALE's core features:
 
-Here is a visual walkthrough of the HALE application:
+### 🎛️ Central Portal Dashboard
+![Dashboard](Hale_project/DashBoard_app/static/images/screenshots/dashboard.png)
 
-### 🏠 Home / Landing Page
-![Home Page Screenshot](Hale_project/DashBoard_app/static/images/screenshots/home.png)
+### 🩺 Department Management
+![Departments](Hale_project/DashBoard_app/static/images/screenshots/departments.png)
 
-### 🔑 User Login
-![Login Page Screenshot](Hale_project/DashBoard_app/static/images/screenshots/login.png)
+### 🎫 Booking Appointment & Patient Card
+![Patient Card](Hale_project/DashBoard_app/static/images/screenshots/patient_card.png)
+
+### ⚙️ Admin Interface (Django Admin)
+![Django Admin](Hale_project/DashBoard_app/static/images/screenshots/django_admin.png)
 
 ### 📝 User Registration
-![Registration Page Screenshot](Hale_project/DashBoard_app/static/images/screenshots/register.png)
+![Registration Page](Hale_project/DashBoard_app/static/images/screenshots/register.png)
 
 ---
 
