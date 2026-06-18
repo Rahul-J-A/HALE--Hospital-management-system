@@ -501,7 +501,7 @@ def feedback(request):
         send_mail(
                 "feedback",
                 message,  
-                "djangoemail0000@gmail.com",
+                "your-email@example.com",
                 [feedback_instance.email],
                 fail_silently=False,
             )

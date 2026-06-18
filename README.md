@@ -222,8 +222,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'djangoemail0000@gmail.com'
-EMAIL_HOST_PASSWORD = 'byctfnjqsxnwvhha'  # Replace with environment variable
+EMAIL_HOST_USER = 'your-email@example.com'
+EMAIL_HOST_PASSWORD = 'your-app-password'  # Replace with environment variable
 ```
 > [!WARNING]
 > Keep `EMAIL_HOST_PASSWORD` hidden using environment variables (e.g. `python-dotenv`) in production environments.
