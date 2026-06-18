@@ -74,6 +74,21 @@ graph TD
 
 ---
 
+## 📸 Screenshots
+
+Here is a visual walkthrough of the HALE application:
+
+### 🏠 Home / Landing Page
+![Home Page Screenshot](Hale_project/DashBoard_app/static/images/screenshots/home.png)
+
+### 🔑 User Login
+![Login Page Screenshot](Hale_project/DashBoard_app/static/images/screenshots/login.png)
+
+### 📝 User Registration
+![Registration Page Screenshot](Hale_project/DashBoard_app/static/images/screenshots/register.png)
+
+---
+
 ## 🚀 Getting Started
 
 Follow these instructions to set up the project locally on your system.
