@@ -185,6 +185,28 @@ hale_project/
 
 ---
 
+## 🌐 Remote Access & OP Counter Logic
+
+### Remote Access (Port Forwarding Setup)
+To access HALE from home or other networks outside your local router:
+1. **Port Forwarding**: Set up your home router to forward incoming traffic (e.g., port `8000`) to your local machine's private IP address on the same port.
+2. **Django Bind Address**: Start the server bound to all interfaces so it listens for external connection requests:
+   ```powershell
+   python Hale_project/manage.py runserver 0.0.0.0:8000
+   ```
+3. **Allowed Hosts**: In `Hale_project/Hale_project/settings.py`, modify `ALLOWED_HOSTS` to include your public IP address or your custom dynamic DNS domain name:
+   ```python
+   ALLOWED_HOSTS = ['your-public-ip-or-domain', '127.0.0.1', 'localhost']
+   # For quick testing only: ALLOWED_HOSTS = ['*']
+   ```
+
+### OP Counter Logic
+* **Slot-based Limits**: Doctors define operational OP limits (`sec_op_no`) when creating availability slots in the doctor panel (`/doctor/`). This value is validated against the department's max capacity (`dept_op_nos`).
+* **Static Allocation**: The OP counter represents the maximum allocated ticket or queue capacity for that specific scheduled slot block.
+* **Note on Live Queues**: The app currently registers and displays these token/OP numbers statically. It **does not** include a real-time ticking queue display (e.g. "Now serving token X") out of the box.
+
+---
+
 ## ⚙️ Important Configuration
 
 > [!IMPORTANT]
