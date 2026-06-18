@@ -1,0 +1,35 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |Accounting {% endblock %}</title>
+
+{% block css %}
+<style>
+
+.btn{
+    border-radius: 30px;
+    background-color: darkslategrey;
+    margin: 30px;
+    color: aliceblue;
+}
+</style>
+
+{% endblock %}
+
+</head>
+<body>
+    {% block body %}
+    <div class="nav-tops">
+      <a href="{% url 'med_profit' %}"><button class="btn">Medical Expenses</button></a>
+      <a href="{% url 'patient_profit' %}"><button class="btn">Patient Expenses</button></a>
+      <!-- <a href="{% url 'staff_add' %}"><button class="btn">Medical Expenses</button></a> -->
+
+    </div>
+
+    {% endblock %}
+</body>
+</html>

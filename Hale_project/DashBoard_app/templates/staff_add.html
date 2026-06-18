@@ -1,0 +1,117 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |Staffs {% endblock %}</title>
+   {% block css %}
+   
+   <style>
+    .btn{
+        border-radius: 30px;
+        background-color: darkslategrey;
+       border: 2px solid red;
+        color: aliceblue;
+    }
+    .container_reg{
+        margin-left: 400px;
+        background-color: darkslategrey;
+        color: aliceblue;
+        font-family: 'Tektur', sans-serif;
+        height: auto;
+        width: 550px;
+        margin-top:20px ;
+        border-radius: 30px;
+        padding: 20px 20px;
+    }
+    .title{
+        color: aliceblue;
+        font-family: 'Tektur', sans-serif;
+        margin-left: 20px;      
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
+</head>
+<body>
+    {% block body %}
+    {% if msg %}
+    <script>
+     
+        alert('{{msg}}');
+    </script>
+      
+    {% endif %}
+    <div class="title"><h1>Register</h1></div>
+    <div class="container_reg">
+    <center>
+        <form action="" method="post">
+            {% csrf_token %}
+        <table cellpadding="15px">
+           <tr>
+       
+               <th>Name</th>
+               <td><input type="text" name="name" placeholder="Type here ...." required></td>
+           </tr>
+           <tr>
+               <th>Age</th>
+               <td><input type="number" name="age" id="" placeholder="Type here ...." required></td>
+            </tr>
+            <tr>
+               <th>Gender</th>
+               
+               <th><input type="radio" id="Male" name="gender" value="Male"required>
+                <label for="Male">MAlE</label>
+                <input type="radio" id="Female" name="gender" value="Female">
+                <label for="Female">Female</label>
+            </th>
+            </tr>
+            <tr>
+               <th>Designation</th>
+               <td>
+                <select name="role" required>
+                <option value="not selected"  >Select Options</option>
+                <option value="DepartmentHead" >Department Head</option>
+                <option value="Officestaff" >Office Staff</option>
+                <option value="Nurse" >Nurse</option>
+                <option value="Technicalstaff" >Technical staff</option>
+                
+                <option value="Receptionist" >Receptionist</option>
+
+               </select>
+            
+            </td>
+               
+            </tr>
+            <tr>
+               <th>PhoneNo</th>
+               <td><input type="number" name="phone_no" placeholder="Type here ...." required></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+               <td><textarea name="address"  cols="22" rows="3" placeholder="Type here ...." required></textarea></td>
+            </tr>
+            <tr>               
+                <Th>save</Th>
+               <th><button class="btn" type="submit">SAVE</button></th>
+            </tr>
+
+       
+           
+           
+       
+       
+       
+        </table>
+       
+       
+    </form>
+       
+       </center>
+    </div>
+      
+    {% endblock %}
+</body>
+</html>

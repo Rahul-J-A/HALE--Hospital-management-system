@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title%}HALE |Doctor {% endblock %}</title>
+  <title>{% block title%}HALE |Doctor appoint 2{% endblock %}</title>
   {% block css %}
   <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -137,7 +137,7 @@ body{
     color: aliceblue;
     background-color:darkslategray;
     margin: 50px;
-    width: 900px;
+    width: 930px;
     padding: 50px;
     border-radius: 30px;
 }
@@ -170,6 +170,16 @@ body{
     border: 2px solid rgb(202, 216, 0);
     
     margin-left: 5px;
+    color: white;
+    width: 80px;
+}
+.makeAPT_btn2{
+    border-radius: 30px;
+    background-color:darkslategray;
+    /* border: 2px solid red; */
+    border: 2px solid rgb(202, 216, 0);
+    
+    margin-left: 1px;
     color: white;
     width: 80px;
 }
@@ -221,21 +231,11 @@ body{
 <body>
   
 {% block body %}
-<!-- 
-<div  class="grid1">
-    <div class="imag_box1">
-        <img src="{% static '/images/istockphoto-1298375809-612x612.jpg'%}" alt="img1" height="400px">
-      
-        
-    </div>-->
+
      
-      
-  
-    
 <a href="{% url 'doctor' %}"><button type="button" class="btn_add1"id="showupdate" >Add Section</button></a>
 <a href=""><button type="button" class="btn_add"id="showupdate" >Received Appointments</button></a>
 <h3 class="appinttitle" style="margin: 10px 0px  0px 60px ; color:white; text-decoration: underline;"><B>APPOINTMENT DETAILS</B></h3>  
-
 {% for data in appointmentdetail %}
 
 
@@ -247,68 +247,61 @@ body{
 
                     <form action="{% url 'recievedappointments' data.id %}" method="post">
                     
-                    {% csrf_token %}
-                    
-                        
-
-                            <div class="appoint_box newgrid">
+                        {% csrf_token %}
+                        <div class="appoint_box newgrid">
+                                    
+                            <div class="date_side"><b>ID: {{data.app_id}}<p id="datename"> DATE:</p> <p id="dates">{{data.app_date}}</p></b></div>
+                            <table cellpadding="3px" class="table_appoint"  >
+                                <tr>
+                                    <th>NAME: {{data.app_Name}}</th>
+                                    
+                                        
+                                    <th><div class="tableth-length"></div></th>
                                 
-                                <div class="date_side"><b>ID: {{data.app_id}}<p id="datename"> DATE:</p> <p id="dates">{{data.app_date}}</p></b></div>
-                                <table cellpadding="3px" class="table_appoint"  >
-                                    <tr>
-                                        <th>NAME: {{data.app_Name}}</th>
-                                        
-                                            
-                                        <th><div class="tableth-length"></div></th>
+                                
                                     
                                     
-                                        
-                                        
-                                        <th rowspan="4"><center><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id"></center></th>
+                                    <th rowspan="4"><center><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id"></center></th>
 
+                                
+                                </tr>
+                                <tr>
+                                    <th>AGE:  {{data.app_gender}}</th>
+                                </tr>
+                                <tr>
+                                    <th>GENDER:   {{data.app_gender}}</th>
+                                </tr>
+                                <tr>
+                                    <th>DISCRIPTION:  {{data.app_discription}}</th>
+                                </tr>
+                                <tr>
+                                    <th>APPOINTED TO :  {{data.app_Appointed_doctor}}</th>
+                                </tr>
+                                <tr>
+                                    <th><div class="department">DEPARTMENT :  {{data.app_department}}</div></th>
+                                </tr>
+                                <tr>
+                                   
+                                    <td><textarea name="priscription" id="" cols="25" rows="3" placeholder="Priscribe Medicine">{{data.app_doctor_priscription}}</textarea></td>
+                                </tr>
+                                <tr>
+                                    <th>OP NO :  {{data.app_op_no}}</th>
                                     
-                                    </tr>
-                                    <tr>
-                                        <th>AGE:  {{data.app_gender}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>GENDER:   {{data.app_gender}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>DISCRIPTION:  {{data.app_discription}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>APPOINTED TO :  {{data.app_Appointed_doctor}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th><div class="department">DEPARTMENT :  {{data.app_department}}</div></th>
-                                    </tr>
-                                    <tr>
-                                        <th>OP NO :  {{data.app_op_no}}</th>
-                                        {% if data.app_mark %}
-                                        <td rowspan="3" style="height: 150px;"><div class="visited"><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
-                                        </td>
-                                        {% else %}
-                                        <td rowspan="3" style="height: 150px;"><div class="visited" style="visibility: hidden;" ><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
+                                    {% if data.app_mark %}
+                                    <td rowspan="3" style="height: 150px;"><div class="visited"><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
+                                    </td>
+                                    {% else %}
+                                    <td rowspan="3" style="height: 150px;"><div class="visited" style="visibility: hidden;" ><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div></td>
 
-                                            {% endif %}
-                                    </tr>
-                                    <tr>
-                                        
-                            
-                                    
-                                        <!-- <th colspan="3"><div class="tableth-length"><input type="checkbox" class="makeAPT_btn" style="border: 2px solid red;" ><pre style="font-weight: bold; color: aliceblue;">Visited</pre></div></th> -->
+                                        {% endif %}
+                                </tr>
+
+                                <tr>
                                     <th> 
-                                        
-                                        <!-- <select name="notappoint_false" >
-                                            <option value="novalue">Deselect option</option>
-                                            <option value="deselect">Not Visit</option>
-                                        </select> -->
+                                    
+                                        <div class="tableth-length"></div>
 
-                                        
-                                        <div class="tableth-length">
-
-                                        </th>
+                                    </th>
                                         
                                     {% if data.app_mark %}
                                     <th style="width: 500px">
@@ -318,134 +311,143 @@ body{
                                         Not Visit
                                             </button></a></center>
                                         
-                                        
+                                    </th>
                                     {% else %}
                                     
                                         <th>
                                         <center>
                                             <input type="text" name="virify_val" value="notmarked" style="visibility: hidden;">
 
-                                            <a href="{% url 'recievedappointments' data.id %}"><button type="submit" class="makeAPT_btn" id="buttontext" style="border: 2px solid red;font-weight: bold; color: aliceblue;margin-left: 200px">      
+                                            <a href="{% url 'recievedappointments' data.id %}"><button type="submit" class="makeAPT_btn" id="buttontext" style="border: 2px solid red;font-weight: bold; color: aliceblue;margin-left: 120px">      
                                         Visit
-                                            </button></a></center>
+                                            </button></a>
+                                           
+                                            <a href="{% url 'prints' data.id %}"><button type="button" class="makeAPT_btn2" id="buttontext" style="border: 2px solid red;font-weight: bold; color: aliceblue;margin-left: 10px;">      
+                                                Print
+                                                    </button></a></center>
+                                        </th>
                                         
                                             {% endif %}
-                                        </th>
+                                        
                                     </tr>
-                                </table>
-                            </div>
-                            {% endif %}
-        {% endfor %}
-    </form>
-  
 
-    {% for data in appointmentdetail %}
-
-
-                {% if data.app_mark %}  <!--  shows the marked values-->
-  
-
-                <div id="appoint_view ">
-
-
-                    <form action="{% url 'recievedappointments' data.id %}" method="post">
+    
+                            </table>
+                        </div>                               
+                     </form>
                     
-                    {% csrf_token %}
-                    
-                        
+                    </div>
+           {% endif %}
+           {% endfor %}
 
-                            <div class="appoint_box newgrid">
-                                
-                                <div class="date_side"><b>ID: {{data.app_id}}<p id="datename"> DATE:</p> <p id="dates">{{data.app_date}}</p></b></div>
-                                <table cellpadding="3px" class="table_appoint"  >
-                                    <tr>
-                                        <th>NAME: {{data.app_Name}}</th>
-                                        
-                                            
-                                        <th><div class="tableth-length"></div></th>
-                                    
-                                    
-                                        
-                                        
-                                        <th rowspan="4"><center><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id"></center></th>
 
-                                    
-                                    </tr>
-                                    <tr>
-                                        <th>AGE:  {{data.app_gender}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>GENDER:   {{data.app_gender}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>DISCRIPTION:  {{data.app_discription}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>APPOINTED TO :  {{data.app_Appointed_doctor}}</th>
-                                    </tr>
-                                    <tr>
-                                        <th><div class="department">DEPARTMENT :  {{data.app_department}}</div></th>
-                                    </tr>
-                                    <tr>
-                                        <th>OP NO :  {{data.app_op_no}}</th>
-                                        {% if data.app_mark %}
-                                        <td rowspan="3" style="height: 150px;"><div class="visited"><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
-                                        </td>
-                                        {% else %}
-                                        <td rowspan="3" style="height: 150px;"><div class="visited" style="visibility: hidden;" ><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
+           {% for data in appointmentdetail %}
 
-                                            {% endif %}
-                                    </tr>
-                                    <tr>
-                                        
-                            
-                                    
-                                        <!-- <th colspan="3"><div class="tableth-length"><input type="checkbox" class="makeAPT_btn" style="border: 2px solid red;" ><pre style="font-weight: bold; color: aliceblue;">Visited</pre></div></th> -->
-                                    <th> 
-                                        
-                                        <!-- <select name="notappoint_false" >
-                                            <option value="novalue">Deselect option</option>
-                                            <option value="deselect">Not Visit</option>
-                                        </select> -->
 
-                                        
-                                        <div class="tableth-length">
+           {% if data.app_mark %}  <!--  shows the marked values-->
 
-                                        </th>
-                                        
-                                    {% if data.app_mark %}
-                                    <th style="width: 500px">
-                                        <center>
-                                            <input type="text" name="virify_val" value="marked" style="visibility: hidden;">
-                                            <a href="{% url 'recievedappointments' data.id %}"><button type="submit" class="makeAPT_btn" id="buttontext"{% if data.app_mark %}id="makeAPT_btn"{% endif %} style="border: 2px solid red;font-weight: bold; color: aliceblue; width: 100px;">      
-                                        Not Visit
-                                            </button></a></center>
-                                        
-                                        
-                                    {% else %}
-                                    
-                                        <th>
-                                        <center>
-                                            <input type="text" name="virify_val" value="notmarked" style="visibility: hidden;">
 
-                                            <a href="{% url 'recievedappointments' data.id %}"><button type="submit" class="makeAPT_btn" id="buttontext" style="border: 2px solid red;font-weight: bold; color: aliceblue;margin-left: 200px">      
-                                        Visit
-                                            </button></a></center>
-                                        
-                                            {% endif %}
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                            {% endif %}
-        {% endfor %}
-    </form>
-    </div>
+           <div id="appoint_view ">
+
+
+               <form action="{% url 'recievedappointments' data.id %}" method="post">
+               
+               {% csrf_token %}
+               
+                   
+
+                       <div class="appoint_box newgrid">
+                           
+                           <div class="date_side"><b>ID: {{data.app_id}}<p id="datename"> DATE:</p> <p id="dates">{{data.app_date}}</p></b></div>
+                           <table cellpadding="3px" class="table_appoint"  >
+                               <tr>
+                                   <th>NAME: {{data.app_Name}}</th>
+                                   
+                                       
+                                   <th><div class="tableth-length"></div></th>
+                               
+                               
+                                   
+                                   
+                                   <th rowspan="4"><center><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id"></center></th>
+
+                               
+                               </tr>
+                               <tr>
+                                   <th>AGE:  {{data.app_gender}}</th>
+                               </tr>
+                               <tr>
+                                   <th>GENDER:   {{data.app_gender}}</th>
+                               </tr>
+                               <tr>
+                                   <th>DISCRIPTION:  {{data.app_discription}}</th>
+                               </tr>
+                               <tr>
+                                   <th>APPOINTED TO :  {{data.app_Appointed_doctor}}</th>
+                               </tr>
+                               <tr>
+                                   <th><div class="department">DEPARTMENT :  {{data.app_department}}</div></th>
+                               </tr>
+                               <tr>
+                                <th><pre style="color: aliceblue; font-weight: bold; font-size: 20px;">Priscription:  {{data.app_doctor_priscription}}</pre></th>
+
+                               </tr>
+                               <tr>
+                                   <th>OP NO :  {{data.app_op_no}}</th>
+                                   {% if data.app_mark %}
+                                   <td rowspan="3" style="height: 150px;"><div class="visited"><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
+                                   </td>
+                                   {% else %}
+                                   <td rowspan="3" style="height: 150px;"><div class="visited" style="visibility: hidden;" ><img src="{%  static '/images/visited_bg.png'%}" alt="visited" height="150px"></div>
+
+                                       {% endif %}
+                               </tr>
+                               <tr>
+                                   
+                       
+                               
+                               <th> 
+                                 
+
+                                   
+                                   <div class="tableth-length"></div>
+
+                               </th>
+                                   
+                               {% if data.app_mark %}
+                               <th style="width: 500px">
+                                   <center>
+                                       <input type="text" name="virify_val" value="marked" style="visibility: hidden;">
+                                       <a href="{% url 'recievedappointments' data.id %}"><button type="submit" class="makeAPT_btn" id="buttontext"{% if data.app_mark %}id="makeAPT_btn"{% endif %} style="border: 2px solid red;font-weight: bold; color: aliceblue; width: 100px;">      
+                                   Not Visit
+                                       </button></a>
+                                      
+                                   
+                               </th> 
+                               {% else %}
+                               
+                                   <th>
+                                   <center>
+                                       <input type="text" name="virify_val" value="notmarked" style="visibility: hidden;">
+
+                                       <a href="{% url 'recievedappointments' data.id %}"><button type="submit" class="makeAPT_btn" id="buttontext" style="border: 2px solid red;font-weight: bold; color: aliceblue;margin-left: 200px">      
+                                   Visit
+                                       </button></a></center>
+                                   </th>
+                                       {% endif %}
+                                   
+                               </tr>
+                           </table>
+                       </div>
+               </form>
+           </div>
+                       {% endif %}
+   {% endfor %}
 
 </div>
 
 
-
+        
 {% endblock %}
 </body>
 </html>

@@ -1,0 +1,106 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title %}HALE| PHARMACY{% endblock %}</title>
+{% block css%}
+<style>
+
+    .tablemed,th,td{
+        border: 3px solid rgb(221, 237, 237);
+        font-weight: bold;
+        font-family: 'Tektur', sans-serif;
+        
+    }
+    .search{
+        margin-left: 50px;
+    }
+    .medicine_container{
+        background-color: darkslategrey;
+       margin: 2px;
+    }
+</style>
+
+{% endblock %}
+</head>
+<body>
+    {% block body %}
+   <form action="{% url 'pharmacy' %}" method="post">
+    {% csrf_token %}
+    <div class="search"><input type="search" name="search" > <button type="submit"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray;color:white">Search</button></div>
+</form>
+    <div class="medicine_container">
+        
+<center>
+        <table  class="tablemed" style="color: #F5F5F5; margin-left: 15px;  margin-top: 20px; " cellpadding="20px"  border="1">
+            <tr class="table_tr">
+            <th class="table_th">Medicine_id </th>
+                <th class="table_th">Generic Name</th>
+                <th class="table_th">Category </th>
+                <th class="table_th">Desc1 </th>
+                <th class="table_th">Desc2 </th>
+                <th class="table_th">Expiry Date </th>
+                <th class="table_th">Price  </th>
+                <th class="table_th">Use  </th>
+                <th class="table_th">Quantity </th>
+                {% for med2 in searched %}
+            </tr>
+            <form action="{% url 'updatemed' med2.medicine_id %}" method="post">
+                {% csrf_token %}
+            <tr class="table_tr">
+               <th class="table_th"><center><p style="color: red;">Searched</p>{{med2.medicine_id}}</center></th>
+               <th class="table_th"><center>{{med2.generic_name}}</center></th>
+               <th class="table_th"><center>{{med2.category}}</center></th>
+               <th class="table_th"><center>{{med2.desc1}}</center></th>
+               <th class="table_th"><center>{{med2.desc2}}</center></th>
+               <th class="table_th"><center>{{med2.exp_date}}</center></th>
+               <th class="table_th"><center>{{med2.price}}</center></th>
+               <th class="table_th"><center>{{med2.use}}</center></th>
+               <th class="table_th"><center>{{med2.Quantity}}</center></th>
+               
+                <th><button type="submit"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray;color:white">Update</button></th>
+                <th><a href="{% url 'sellmed' med2.medicine_id %}"><button type="button"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray; color:white">Sell</button></a></th>
+
+                <th><a href="{% url 'med_delete' med2.medicine_id %}"><button type="button"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray; color:white">Delete</button></a></th>
+            </tr>
+        </form>
+          {% endfor %}
+            {% for med in meddetails %}
+            </tr>
+            <form action="{% url 'updatemed' med.medicine_id %}" method="post">
+                {% csrf_token %}
+            <tr class="table_tr">
+               <th class="table_th"><center>{{med.medicine_id}}</center></th>
+               <th class="table_th"><center>{{med.generic_name}}</center></th>
+               <th class="table_th"><center>{{med.category}}</center></th>
+               <th class="table_th"><center>{{med.desc1}}</center></th>
+               <th class="table_th"><center>{{med.desc2}}</center></th>
+               <th class="table_th"><center>{{med.exp_date}}</center></th>
+               <th class="table_th"><center>{{med.price}}</center></th>
+               <th class="table_th"><center>{{med.use}}</center></th>
+               <th class="table_th"><center>{{med.Quantity}}</center></th>
+               <!-- <th><a href="{% url 'updatemed' med.medicine_id %}"><button type="submit"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;">Update</button></a></th> -->
+                <th><button type="submit"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray;color:white">Update</button>
+                    <th><a href="{% url 'sellmed' med.medicine_id %}"><button type="button "style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray; color:white">Sell</button></a></th>
+                </th>
+                <th><a href="{% url 'med_delete' med.medicine_id %}"><button type="button"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray; color:white">Delete</button></a></th>
+            </tr>
+        </form>
+          {% endfor %}
+
+
+
+
+        </table>
+
+    </center>
+
+
+    </div>
+
+    {% endblock %}
+</body>
+</html>

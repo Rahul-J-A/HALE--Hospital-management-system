@@ -1,0 +1,34 @@
+{% extends "nav.html"%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block java %}
+    <script>
+    setTimeout(function() {
+        var appointmentUrl = "{% url 'addmed' %}";
+        window.location.href = appointmentUrl; // Redirect to the 'appointment' page after 3 seconds
+    }, 1000);
+
+</script>
+{% endblock %}
+</head>
+<body>
+    {% block body %}
+    {% if msg %}
+    <script>
+        alert('{{msg}}');
+    </script>
+    
+
+{% endif %}
+
+    <H1 style="color: red;"> UPDATED SUCCESSFULLY</H1>
+
+
+    {% endblock %}
+</body>
+</html>

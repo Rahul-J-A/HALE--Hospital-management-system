@@ -1,12 +1,11 @@
-{% extends "nav.html " %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title%}HALE |Appointment_pop {% endblock %}</title>
-  {% block css %}
+  <title>HALE |Patient Card </title>
+
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <!-- <script src="https://www.w3schools.com/lib/w3.js"></script> -->
   <script>
@@ -18,6 +17,17 @@
         else{
             x.style.display = "none";
         }    
+    }
+    function screenprint(){
+        var x = document.getElementById("makeAPT_btn");
+        var y = document.getElementById("makeAPT_btn2");
+
+      
+
+        x.style.display="none"
+        console.log("hello")
+        window.print();
+        y.style.display="block"
     }
     
   </script>
@@ -141,31 +151,40 @@ body{
 .department{
     width: 250px;
 }
-.makeAPT_btn{
+#makeAPT_btn{
     border-radius: 30px;
-    background-color:darkslategray;
+ background-color:darkslategray;
     border: 2px solid red;
     margin-left: 595px;
-    color: white;
-    width: 150px;
-    height: 30px;
+    /* color: white; */
+    /* width: 150px;
+    height: 30px; */
+}
+.makeAPT_btn{
+    border-radius: 30px;
+ background-color:darkslategray;
+    border: 2px solid red;
+    margin-left: 595px;
+    /* color: white; */
+    /* width: 150px;
+    height: 30px; */
 }
 .table_appoint{
     width: 500px;
    
 }
+#makeAPT_btn2{
+    display: none;
+}
 </style>
-  
-  {% endblock %}
-  {% block java %}
+
   <script>
     
 </script>
-  {% endblock %}
+
 </head>
 <body>
-  
-{% block body %}
+
 
 
         {% if msg %}
@@ -178,32 +197,7 @@ body{
 
    
     
-
-     <form action="" method="post">
-        {% csrf_token %}
-        <div class="popup_windows" id="popup_windowtitle">
-            <div><h3 style="color: white; font-weight: bold; font-family: 'Tektur', sans-serif ; margin: 10px; text-decoration: underline;">ADD APPOINTMENT </h3></div>
-    
-             <!-- for loop ondu markallu -->
-             <select name="select_patient"  class="select2">
-                <option value="none" >SELECT PATIENT</option>
-                {% for options in searched_data %}
-                <option value="{{options.id}}"><pre>&nabla;  Name: {{options.patient_name}}, Age: {{options.patient_age}}, Phone: {{options.patient_phone}} Gender: {{options.patient_gender}}</pre></option>
-                
-                
-                {% endfor %}
-                {% for options in patient_data %}
-                <option value="{{options.id}},{{appoint_detail.sec_doctor}}"><pre>Name: {{options.patient_name}}, Age: {{options.patient_age}}, Phone: {{options.patient_phone}} Gender: {{options.patient_gender}}</pre></option>
-                
-                
-                {% endfor %}
-
-            </select>
-            <button type="submit">ok</button>
-            <input type="search" name="search" ><input type="submit" value="search" >
-        </div>
-        </form>
-            
+<!--  -->
            
 
 <!-- {% for data in appointed_patient %}
@@ -236,43 +230,38 @@ alert("hi")
         }
     });
 </script>
-<form action="{% url 'appointsave' data.id appoint_detail.id  %}" method="post">
-    {% csrf_token %}
+ 
 <div class="appoint_box" class="newgrid">
             
     <div class="date_side"><b>ID: {{data.id}}          <p id="datename"> DATE:</p> <p id="date"> </p></b></div>                                    
           
-         <table cellpadding="2px" class="table_appoint" >       
+         <table cellpadding="10px" class="table_appoint" >       
             <tr>
 
                 
-        <th>NAME: {{data.patient_name}}</th>
+        <th>NAME: </th>
+        <th>{{data.patient_name}}</th>
         <th><div class="tableth-length"></div></th>
       
         
         <th rowspan="4"><center><img src="{% static '/images/doctor_id.png'%}" alt="id image" class="doctor_id"></center></th>
     </tr>
     <tr>
-        <th>AGE:  {{data.patient_age}}</th>
+        <th>AGE:  </th>
+        <th>{{data.patient_age}}</th>
     </tr>
     <tr>
-        <th>GENDER:   {{data.patient_gender}}</th>
+        <th>GENDER:   </th> 
+        <th>{{data.patient_gender}}</th>
     </tr>
     <tr>
-        <th>DISCRIPTION:  {{data.patient_discription}}</th>
+        <th>DISCRIPTION:  </th>
+        <th>{{data.patient_discription}}</th>
     </tr>
-    <tr>
-        <th>APPOINTED TO :  {{appoint_detail.sec_doctor}}</th>
-    </tr>
-    <tr>
-        <th><div class="department">DEPARTMENT :  {{appoint_detail.sec_department}}</div></th>
-    </tr>
-    <tr>
-        <th>OP NO :  {{appoint_detail.sec_op_no}}</th>
-    </tr>
+    
     <tr>
         
-        <th colspan="3"><div class="tableth-length"><button type="submit" class="makeAPT_btn" style="border: 2px solid red;" ><pre style="font-weight: bold; color: aliceblue;">Make Appointment</pre></button></div></th>
+        <th colspan="3"><div class="tableth-length"><button type="button" id="makeAPT_btn"  onclick="screenprint()" ><pre >PRINT</pre></button><a href="{% url 'reg_view_patient' %}"><button type="button" id="makeAPT_btn2"   ><pre >Back</pre></button></a></div>
 
         <!-- <th colspan="3"><div class="tableth-length"><button type="submit" class="makeAPT_btn" ><pre style="font-weight: bold; color: aliceblue;">Make Appointment</pre></button></div></th> -->
     </tr>
@@ -284,9 +273,9 @@ alert("hi")
 
 
 </div>
-</form>
+
 </div>
-{% endblock %}
+
 
 </body>
 </html>

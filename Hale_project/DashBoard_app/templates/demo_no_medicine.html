@@ -1,0 +1,29 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% block java %}
+    <script>
+        setTimeout(function() {
+            var pharmacyUrl = "{% url 'pharmacy' %}";
+            window.location.href = pharmacyUrl; // Redirect to the 'pharmacy' page after 3 seconds
+        }, 500);
+</script>
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+    {% if msg %}
+    <h1>jjhjhjhjk</h1>
+    <script>
+        alert('{{msg}}');
+    </script>
+    {% endif %}
+      <H1 style="color: red;"> No Medicine Left</H1>
+    {% endblock %}
+</body>
+</html>

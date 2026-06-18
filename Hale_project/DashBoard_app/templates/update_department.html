@@ -1,11 +1,11 @@
-<!-- basic template -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%} {% endblock %}</title>
+    <title>{% block title%} HALE| ADD DEPARTMENT{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,14 +15,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap');
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+      </style>
+    <script>
+        function toggle(){
+        var x = document.getElementById("dept_form");
+        if(x.style.display === "none"){
+            x.style.display = "block";
+        }
+        else{
+            x.style.display = "none";
+        }    
+    }
+    </script>
 <style>
 
     *{
         margin: 0px;
-        font-family: 'Tektur', sans-serif;
-        
         
     }
     /* body{
@@ -50,7 +59,7 @@
     .layout{
         /* [body-cont] 950px */
         display: grid;
-        grid-template-columns: [sidenav]250px 1250px  ;
+        grid-template-columns: [sidenav]250px 500px 500px  ;
         /* grid-template-rows: 590px; */
         /* border: 5px solid yellow; */
         /* grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px; */
@@ -127,12 +136,15 @@
         
     }
     .content{
+       
       height: 590px;
           overflow: auto;
             /* text-align: justify; */
             /* scrollbar-color: red yellow; */
-            grid-column:2/13;
-            grid-row:1/13;
+            grid-column:2/4;
+            /* grid-row:1/13;
+             */
+             grid-row: 1/2;
             
             /* background-color: #dad7cd; */
            
@@ -142,7 +154,6 @@
     .nav{
         width: 250px;
         background:#36464f;
-      font-family: 'Tektur', sans-serif;
     }
     .nav_services{
         margin-top: 10px;
@@ -202,13 +213,25 @@
   background-color: darkslategray;
   border-bottom: 3px solid red;
 }
+.content{
+    
+    background-color:rgb(74, 128, 128);
+    color: white;
+    border-radius: 30px;
+    overflow-x: hidden;
+}
 body{
     background-color:rgb(74, 128, 128);
 
 }
+#dept_form{
+    grid-column: 3/3;
+    grid-row: 1/2;
+    
+   
+}
 </style>
-{% block css %}{% endblock %}
-{% block java %}
+
 <script>
  
       if (history.replaceState) {
@@ -219,9 +242,18 @@ body{
 
             // Remove the search parameter from the URL
            
-</script>{% endblock %}
+</script>
 </head>
 <body>
+  
+  {% if msg %}
+  <script>
+      alert('{{msg}}');
+  </script>
+  
+
+{% endif %}
+
     <div class="topnav"> <a href="" class="dist_icon"><box-icon name='mobile' ></box-icon></a><a href="https://www.facebook.com/" class="dist_icon"><box-icon name='facebook-circle' type='logo' ></box-icon></a><a href="https://www.instagram.com/accounts/login/?hl=en"class="dist_icon"><box-icon name='instagram' type='logo' ></box-icon></a><a href="https://www.youtube.com/?themeRefresh=1" class="dist_icon"><box-icon name='youtube' type='logo' ></box-icon></a></div>
     <div class="titlebar">
         <div><img src="{% static '/images/hale.png' %}" alt="brandlogo" height="46px" class="brandimg"></div>
@@ -233,36 +265,106 @@ body{
         <div><h4 class="nav_services"><a href="{% url 'feedback' %}" class="nav_link {% if request.path == '/feedback' %} active {% endif %}">Feedback</a></h4></div>
         <div><h4 class="nav_services"><a href="{% url 'logout' %}" class="nav_link ">Logout</a></h4></div>
     </div>
-    <div class="layout" style=" font-family: 'Tektur', sans-serif;">
-        <div class="nav_side"style=" font-family: 'Tektur', sans-serif;">
+    <div class="layout">
+        <div class="nav_side">
           <div class="nav"><a href="{% url 'admin:index' %}"><label class="btns btn1{% if request.path == '/admin' %} active {% endif %}" onclick="color_chang('btns')" > <center>Dashboard</center></label></a></div>
-          <div class="nav"><a href="{% url 'department' %}">  <label class="btns {% if request.resolver_match.url_name == 'department' %} active {% endif %} {% if request.resolver_match.url_name == 'add_department' %} active {% endif %} {% if request.resolver_match.url_name == 'dept_update' %} active {% endif %}"> <center>Department</center></label></a></div>
+          <div class="nav"><a href="{% url 'department' %}"><label class="btns{% if request.path == '/department/' %} active {% endif %} {% if request.resolver_match.url_name == 'dept_update' %} active {% endif %}"><center>Department</center></label></a></div>
           <div class="nav"><a href="{% url 'doctor' %}"><label class="btns{% if request.path == '/doctor/' %} active {% endif %}{% if request.path == '/recievedappointmentsmark/' %} active {% endif %} {% if request.resolver_match.url_name == 'update' %} active {% endif %}{% if request.resolver_match.url_name == 'delete' %} active {% endif %} "><center>Doctor</center></label></a></div> 
-          <div class="nav"><a href="{% url 'patient' %}"><label class="btns{% if request.path == '/patient/' %} active {% endif %} {% if request.path == '/reg_patient/' %} active {% endif %} {% if request.path == '/reg_view_patient/' %} active {% endif %}{% if request.path == '/reg_update/' %} active {% endif %} {% if request.resolver_match.url_name == 'reg_update_patient/' %} active {% endif %} {% if request.resolver_match.url_name == 'reg_update_patient' %} active {% endif %}"><center>Patient</center></label></a></div>
-          <div class="nav"><a href="{% url 'addmed' %}"><label class="btns{% if request.path == '/addmed/' %} active {% endif %} "><center>Add Medicine</center></label></a></div>
+          <div class="nav"><a href="{% url 'patient' %}"><label class="btns{% if request.path == '/patient/' %} active {% endif %} {% if request.path == '/reg_patient/' %} active {% endif %} {% if request.path == '/reg_view_patient/' %} active {% endif %}{% if request.path == '/reg_update/' %} active {% endif %} {% if request.resolver_match.url_name == 'reg_update_patient/' %} active {% endif %}"><center>Patient</center></label></a></div>
+          <div class="nav"><a href="{% url 'addmed' %}"><label class="btns{% if request.path == '/addmed/' %} active {% endif %}"><center>Add Medicine</center></label></a></div>
           <div class="nav"><a href="{% url 'pharmacy' %}"><label class="btns{% if request.path == '/pharmacy/' %} active {% endif %}"><center>Pharmacy</center></label></a></div>
-          <div class="nav"><a href="{% url 'staffs' %}"><label class="btns{% if request.path == '/staffs/' %} active {% endif %} {% if request.resolver_match.url_name == 'staff_add' %} active {% endif %}"><center>Staff</center></label></a></div>
+          <div class="nav"><a href="{% url 'staffs' %}"><label class="btns{% if request.path == '/staffs/' %} active {% endif %}"><center>Staff</center></label></a></div>
           <div class="nav"><a href="{% url 'appointment' %}"><label class="btns {% if request.path == '/appointment/' %} active {% endif %}{% if request.resolver_match.url_name == 'add_appoint' %} active {% endif %}"><center> Appointment</center></label></a></div>
           <div class="nav"><a href="{% url 'payment' %}"><label class="btns{% if request.path == '/payment/' %} active {% endif %}"><center> Payment</center></label></a></div>
-          <div class="nav"><a href="{% url 'medication_details' %}"><label class="btns {% if request.resolver_match.url_name == 'medication_details' %} active {% endif %}"><center> Medication Details</center></label></a></div>
-          <div class="nav"><a href="{% url 'Accounting' %}"><label class="btns {% if request.resolver_match.url_name == 'Accounting' %} active {% endif %} {% if request.resolver_match.url_name == 'med_profit' %} active {% endif %} {% if request.resolver_match.url_name == 'patient_profit' %} active {% endif %}"><center> Accounting</center></label></a></div>
-          <div class="nav"><a href="{% url 'medicine' %}"><label class="btns{% if request.resolver_match.url_name == 'medicine' %} active {% endif %}"><center> Medicine</center></label></a></div>
+          <div class="nav"><a href="{% url 'medication_details' %}"><label class="btns{% if request.path == '/medication_details/' %} active {% endif %}"><center> Medication Details</center></label></a></div>
+          <div class="nav"><a href="{% url 'bloodbank' %}"><label class="btns {% if request.path == '/bloodbank/' %} active {% endif %}"><center> Blood bank</center></label></a></div>
+          <div class="nav"><a href="{% url 'medicine' %}"><label class="btns{% if request.path == '/Medicine/' %} active {% endif %}"><center> Medicine</center></label></a></div>
             
         </div>
         
-        <div class="content scrollbar" id="style-7">
-        
-        
-        {% block body %}{% endblock %}
+        <div class="content scrollbar" id="style-7"  >
+        <div style="text-decoration: underline;    font-family: 'Kanit', sans-serif; margin-top: 10px; margin-left: 20px;"><h1>DEPARTMENTS</h1></div>
+        <div><button type="button" onclick="toggle()" style="background-color:darkslategray; margin-top: 60px;color: white; border-radius: 30px; margin-left: 50px;">ADD DEPARTMENT</button></div>
+        <div id="dept_form">
+            <form action="" method="post">
+              {% csrf_token %}
+                <table style="margin: 20px; padding-left: 10px; background-color: darkslategrey;" cellpadding="10px">
+                    <tr><th>Department Name:</th>
+                        <td><input type="text" name="deptname" value="{{dept_info.dept_name}}"></td>
+                     <th>OP's:</th>
+                     <td><input type="number" name="op" id="" value="{{dept_info.dept_op_nos}}"></td>
+                    </tr>
+                        <tr>
+                            <th>Head Of Department:</th>
+                            <td><select name="head_of_dept" >
+                              <option >select options</option>
+                              {% if dept_info %}
+                          
+                              <option value="{{dept_info.dept_head_of_dept}}" selected>{{dept_info.dept_head_of_dept}}</option>
+
+                              {% endif %}
+                              {% for i in dept_head %}
+                              <option value="{{i.staff_name}}">{{i.staff_name}}</option>
+                              {% endfor %}
+
+                            </select></td>
+                            <!-- <td><input type="text" name="head_of_dept"></td> -->
+                            <th>Contact Info:</th>
+                            <td><input type="number" name="contact" id="" value="{{dept_info.dept_contact}}"></td>
+                        </tr>
+                        <tr><th>Discription:</th></tr>
+                        <td><textarea   cols="50" rows="3" name="discription" > {{dept_info.dept_discription}}</textarea></td>
+                        <tr>
+                          <th> <button type="submit">Update</button></th>
+                        </tr>
+
+
+
+
+                </table>
+
+            </form>
+
+
+
         </div>
+            <!-- <div class="department_container">
+                <div class="dept_box">
+                    <table style="margin: 20px; padding-left: 10px; background-color: darkslategrey;" cellpadding="10px">
+                    <tr><th>Department Name:</th>
+                        <td>{{dept}}</td>
+                     <th>OP's:</th>
+                     <td>{{dept}}</td>
+                    </tr>
+                        <tr>
+                            <th>Head Of Department:</th>
+                            <td>{{dept}}</td>
+                            <th>Contact Info:</th>
+                            <td>{{dept}}</td>
+                        </tr>
+                        <tr><th>Discription:</th></tr>
+                        <td><textarea name="" id="" cols="50" rows="3">{{dept}}</textarea></td>
 
 
+
+
+
+                </table>
+
+                </div>
+                 -->
+        
+        <!-- </div> -->
+       
+        <div>
+            
+        </div>
 
 
 
 
     </div>
-
+    </div>
      <div class="footer_arange">
         <footer class="section footer-classic context-dark bg-image dark text-light " style="background: #2d3246;">
             <div class="container">

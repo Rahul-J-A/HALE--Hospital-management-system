@@ -1,0 +1,137 @@
+
+{% extends "nav.html " %}
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HALE | Payment {% endblock %}</title>
+    {% block css %}
+    <style>
+
+    .search{
+        margin-left: 90px;
+        margin-bottom: 5px;
+    }
+    .medicine_container{
+     background-color: darkslategrey;  
+     margin-left: 10px;
+     /* width:1350px;  */
+     width: max-content;
+     border-radius: 20px;
+     color: aliceblue;
+     height: 530px;
+     padding-top: 10px;
+    }
+    .btn{
+        border-radius: 30px;
+        background-color: darkslategrey;
+        border: 2px solid red;
+        color: aliceblue;
+    }
+    table,td,th{
+        border: 2px solid white;
+    }
+</style>
+
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+<form action="{% url 'payment' %}" method="post">
+    {% csrf_token %}
+    <div class="search"><input type="search" name="search" > <button type="submit"style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;background-color: darkslategray;color:white">Search</button></div>
+</form>
+<div class="medicine_container">
+    <center>
+        <div class="detail_box">
+        <table cellpadding="5px" >
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Description</th>
+                <th>DoctorVisited</th>
+                <th>Department</th>
+                <th>OP</th>
+                <th>Medicine</th>
+                <th>startDate</th>
+                <th>EndDate</th>
+                <th>Presciption</th>
+                <th>Dosage</th>
+                <th>Frequency</th>
+    
+    
+            </tr>
+            {% for data in searched %}
+            <tr>
+                <th><sup style="color:red;">&nabla;</sup>{{data.app_id}}</th>
+                <th>{{data.app_Name}}</th>
+                <th>{{data.app_age}}</th>
+                <th>{{data.app_gender}}</th>
+                <th>{{data.app_discription}}</th>
+                <th>{{data.app_Appointed_doctor}}</th>
+                <th>{{data.app_department}}</th>
+                <th>{{data.app_op_no}}</th>
+                <th>{{data.app_medicine}}</th>
+                <th>{{data.app_startdate}}</th>
+                <th>{{data.app_enddate}}</th>
+                <th>{{data.app_doctor_priscription}}</th>
+                <th>{{data.app_dosage}}</th>
+                <th>{{data.app_frequency}}</th>
+                <th><a href="{% url 'bill' data.id %}"><button class="btn">BILL</button></a></th>
+    
+    
+            </tr>
+    
+        {% endfor %}
+
+
+
+
+
+
+
+
+           {% for data in alldetails %}
+            <tr>
+                <th>{{data.app_id}}</th>
+                <th>{{data.app_Name}}</th>
+                <th>{{data.app_age}}</th>
+                <th>{{data.app_gender}}</th>
+                <th>{{data.app_discription}}</th>
+                <th>{{data.app_Appointed_doctor}}</th>
+                <th>{{data.app_department}}</th>
+                <th>{{data.app_op_no}}</th>
+                <th>{{data.app_medicine}}</th>
+                <th>{{data.app_startdate}}</th>
+                <th>{{data.app_enddate}}</th>
+                <th>{{data.app_doctor_priscription}}</th>
+                <th>{{data.app_dosage}}</th>
+                <th>{{data.app_frequency}}</th>
+                <th><a href="{% url 'bill' data.id %}"><button class="btn">BILL</button></a></th>
+    
+    
+            </tr>
+    
+        {% endfor %}
+        </table>
+    </div>
+    </center>
+    
+    </div>
+    
+   
+                 
+       
+
+
+{%  endblock %}
+    
+</body>
+</html>

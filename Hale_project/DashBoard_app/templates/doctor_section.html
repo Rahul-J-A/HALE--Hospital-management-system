@@ -158,7 +158,7 @@ if (button) {
 <div class="grid1">
     {% if msg %}
         <script>
-            alert('{{msg}}');
+            alert('{{ msg }},"total Op is", {{ total }}');
         </script>
     {% endif %}
 
@@ -185,13 +185,21 @@ if (button) {
                 <tr>
                     <th>
                         <select name="departments" id="departments" required>
-                            <option value="" {% if not up_val.sec_department %}selected{% endif %} disabled>DEPARTMENT</option>
-                            <option value="general" {% if up_val.sec_department == 'general' %}selected{% endif %}>General</option>
-                            <option value="Operation Theater" {% if up_val.sec_department == 'Operation Theater' %}selected{% endif %}>Operation Theater</option>
-                            <option value="Emergency service" {% if up_val.sec_department == 'Emergency service' %}selected{% endif %}>Emergency service</option>
-                            <option value="Speciality clinic" {% if up_val.sec_department == 'Speciality clinic' %}selected{% endif %}>Speciality clinic</option>
-                            <option value="Dialysis unit" {% if up_val.sec_department == 'Dialysis unit' %}selected{% endif %}>Dialysis unit</option>
-                            <option value="Labour Room" {% if up_val.sec_department == 'Labour Room' %}selected{% endif %}>Labour Room</option>
+                            <option value="" >select options</option>
+
+                            {% if up_val.sec_department %}
+                              
+                            
+                            <option value="" {% if   up_val.sec_department %}selected{% endif %} disabled>{{up_val.sec_department}}</option>
+                            {% endif %}
+                            
+                            {% for dept in departs %}
+                              
+                           
+                            
+                            
+                            <option value="{{dept.dept_name}}" {% if up_val.sec_department == 'dept.dept_name' %}selected{% endif %}>{{dept.dept_name}}</option>
+                            {% endfor %}
                         </select>
                     </th>
                     <th><span>OP NO: <input type="number" style="width: 50px;" name="op_no" value="{{up_val.sec_op_no}}" required></span></th>

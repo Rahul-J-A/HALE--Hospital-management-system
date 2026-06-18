@@ -202,6 +202,7 @@ height: 35px;
                             <th class="td" ><center>
                                 {% if d.id %}
                                 <a href="{% url 'reg_update_patient' d.id %}" > <button class="update_btn " type="button">Update</button></a>
+                                <a href=""><button class="update_btn">PRINT</button></a>
                             {% else %}
                                 <!-- Handle the case where the ID is empty or not available -->
                                 <span>No ID available</span>
@@ -228,7 +229,9 @@ height: 35px;
                             <th class="td" ><center>
                                 {% if d.id %}
                                 <a href="{% url 'reg_update_patient' d.id %}" > <button class="update_btn " type="button">Update</button></a>
+                                <a href="{% url 'patient_card' d.id %}"><button class="update_btn" type="button">PRINT</button></a>
                             {% else %}
+                            
                                 <!-- Handle the case where the ID is empty or not available -->
                                 <span>No ID available</span>
                             {% endif %}

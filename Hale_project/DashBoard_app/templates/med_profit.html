@@ -1,0 +1,81 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |MEDICAL EXPENSES {% endblock %}</title>
+
+    {% block css %}
+    <style>
+    
+    .btn{
+        border-radius: 30px;
+        background-color: darkslategrey;
+        margin: 30px;
+        color: aliceblue;
+    }
+
+    .detail_box{
+        color: aliceblue;
+        background-color: darkslategrey;
+        width: 600px;
+        border-radius: 30px;
+        border: 2px solid white;
+    }
+    </style>
+    
+    {% endblock %}
+
+
+
+</head>
+<body>
+    {% block body %}
+
+    <div class="nav-tops">
+
+    <a href="{% url 'Accounting' %}"><button class="btn">Back</button></a>
+
+    </div>
+<center>
+    <div class="detail_box">
+        <table cellpadding="10px" >
+            <tr>
+                <th>MEDICINE NAME</th>
+                <th>COST</th>
+                <th>TOTAL COST</th>
+                <th>TOTAL PROFIT</th>
+
+            </tr>
+            {% for i in med_detail %}
+              
+            
+            <tr>
+                <th>{{i.generic_name}}</th>
+                <th>{{i.price}}</th>
+                {% endfor %}
+                <th>{{sum_result}}</th>
+                <th>{{total_sum}}</th>
+
+
+
+
+            </tr>
+
+            
+
+
+
+
+        </table>
+
+
+    </div>
+</center>
+
+
+    {% endblock %}
+</body>
+</html>

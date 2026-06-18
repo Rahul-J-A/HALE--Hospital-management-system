@@ -15,8 +15,10 @@ admin.site.register(Feeback)
 admin.site.register(ADDSECTION)
 admin.site.register(PatientTable)
 admin.site.register(APPOINTMENTSAVED)
-admin.site.register(ProductList)
-
+admin.site.register(MedicineList)
+admin.site.register(Department)
+admin.site.register(Staffs)
+admin.site.register(profit)
 
 
 def last_login_logout(self, obj):

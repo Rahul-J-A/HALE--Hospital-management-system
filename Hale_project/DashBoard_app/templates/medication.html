@@ -1,425 +1,134 @@
-
+{% extends "nav.html " %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title%} HALE| Medication{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
-      </style>
-    
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Medicine {% endblock %}</title>
+  {% block css %}
 
+
+  <style>
     *{
-        margin: 0px;
-        
+        font-family: 'Tektur', sans-serif;
     }
-    /* body{
-        overflow: hidden;
-        overflow-y: hidden;
-    } */
-    a{
-        text-decoration: none;
-        font-size: large;
-        color: black;
+    .medicine_container{
+        margin-top: 30px;
+        background-color: darkslategray ;
+        width: 600px;
+        font-family: 'Tektur', sans-serif;
+        font-weight: bold;
+        color: aliceblue;
+        height: 550px;
+        border-radius: 30px;
     }
-   a.nav_link:hover{
-   
-    background:#33434b;
-    color: white;
-        text-decoration: none;
-    }
-    .nav_link{
-       
-        padding: 12px;
-        padding-left: 20px;
-        color: white;
-        text-decoration: none;
-    }
-    .layout{
-        /* [body-cont] 950px */
-        display: grid;
-        grid-template-columns: [sidenav]250px 500px 500px  ;
-        /* grid-template-rows: 590px; */
-        /* border: 5px solid yellow; */
-        /* grid-template-rows: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px; */
-    }
-    /* .nav{
-        /* grid-template-rows: 50px; */
-        /* text-decoration: none;
-    } */ 
-    label:hover {
-      background-color:#AAD9BB
-}
-
-.brand_name{
-            display:inline-block;
-            color: white;
-            margin-top: 0px;
-            /* margin-left: 40px; */
-            font-family: 'Tektur', sans-serif;
-            font-size:40px;
-        }
-        .brandimg{
-            display: inline;
-            margin-left: 40px;
-        }
-        .titlebar {
-            margin-top: 0px;
-          display:flex;
-            height: 55px;
-            background-color: #2f3e46;
-            /* border: 3px solid aqua; */
-            margin-bottom: 0px;
-            
-        }
-
-        .btns{
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            width: 250px;
-            height: 50px;
-            margin-bottom: 0px;
-            padding-top: 10px;
-            color: aliceblue;
-            /* padding-left:50px ;
-            padding-right:50px ; */
-            background-color: #35564e;
-            text-decoration: none;
-        
-            
-        }
-        .nav_side{
-           
-          background-color: #52796f;
-          /* background-color: #62480d; */
-        }
-        .footer_arange{
-            background-color:#2f3e46;
-          display: block;
-            height: 70px;
-        }
-        footer{
-          padding-top: 20px;
-          
-        }
-        .btns2{
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-            margin-top: 50px;
-            /* padding-left:150px; */
-            width: 200px;
-            height: 100px;
-            border-radius: 30px;
-            margin-left: 50px;
-        }
-        .nav_dist{
-        margin-left: 700px;
-        
-    }
-    .content{
-       
-      height: 590px;
-          overflow: auto;
-            /* text-align: justify; */
-            /* scrollbar-color: red yellow; */
-            grid-column:2/2;
-            /* grid-row:1/13;
-             */
-             grid-row: 1/2;
-            
-            /* background-color: #dad7cd; */
-           
-            
-            
-        }
-    .nav{
-        width: 250px;
-        background:#36464f;
-    }
-    .nav_services{
-        margin-top: 10px;
-    }
-
-    .topnav{
-        display:flexbox;
-    text-align: right;
-        height: 22px;
-       
-        background-color:#3b4a53;
-       
-    }
-    .dist_icon{
-        display: inline;
-        padding-left: 30px;
-        padding-right: 10px;
-    }
-
-
-    
-#style-7::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
-	border-radius: 15px;
-}
-
-#style-7::-webkit-scrollbar
-{
-	width: 15px;
-	background-color: #F5F5F5;
-}
-
-#style-7::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-image: -webkit-gradient(linear,
-									   left bottom,
-									   left top,
-									   color-stop(0.44, #2f3e46),
-									   color-stop(0.72, #2f3e46),
-									   color-stop(0.86, rgb(11, 75, 75)));
-}
-
-.active{
-  background-color: darkslategray;
-  border-right: 5px solid red;
-  
-  
-
- 
-
-}
-    
-.activetop{
-  background-color: darkslategray;
-  border-bottom: 3px solid red;
-}
-.content{
-    margin-top: 80px;
-    padding-top: 30px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    background-color:rgb(74, 128, 128);
-    color: white;
-    border-radius: 30px;
-    height: 450px;
-}
-body{
-    background-color:rgb(74, 128, 128);
-
-}
-.medicinebox{
-    border-radius: 30px;
-    margin-left: 30px;
-    width: 700px;
-    height: 500px;
-    grid-column: 3/3;
-    background-color: darkslategray;
-    overflow: scroll;
-    overflow-x: hidden;
-    
-}
-.medicine_container{
-    margin-left: 50px;
-    font-family: 'Kanit', sans-serif;
-   
-}
-</style>
-
-<script>
- 
-      if (history.replaceState) {
-                var newUrl = window.location.href.split('?')[0];
-                history.replaceState(null, null, newUrl);
-            }
-        
-
-            // Remove the search parameter from the URL
-           
-</script>
+  </style>
+  {% endblock %}
+  {% block java %}
+  {% endblock %}
 </head>
 <body>
-    <div class="topnav"> <a href="" class="dist_icon"><box-icon name='mobile' ></box-icon></a><a href="https://www.facebook.com/" class="dist_icon"><box-icon name='facebook-circle' type='logo' ></box-icon></a><a href="https://www.instagram.com/accounts/login/?hl=en"class="dist_icon"><box-icon name='instagram' type='logo' ></box-icon></a><a href="https://www.youtube.com/?themeRefresh=1" class="dist_icon"><box-icon name='youtube' type='logo' ></box-icon></a></div>
-    <div class="titlebar">
-        <div><img src="{% static '/images/hale.png' %}" alt="brandlogo" height="46px" class="brandimg"></div>
-        <div><h3 class="brand_name">HALE</h3></div>
-        <div><h4 class="nav_services nav_dist" ><a href="/" class="nav_link  {% if request.path == '/home' %} active {% endif %}" >Home</a></h4></div>
-        <div><h4 class="nav_services " ><a href="{% url 'dashboard' %}" class="nav_link  {% if request.path != '/home' %} activetop {% endif %}" >Dashboard</a></h4></div>
-        <div><h4 class="nav_services " ><a href="{% url 'contact' %}" class="nav_link {% if request.path == '/service' %} active {% endif %} " >Contacts</a></h4></div>
-        <div><h4 class="nav_services"><a href="{% url 'about' %}" class="nav_link {% if request.path == '/about' %} active {% endif %}">About</a></h4></div>
-        <div><h4 class="nav_services"><a href="{% url 'feedback' %}" class="nav_link {% if request.path == '/feedback' %} active {% endif %}">Feedback</a></h4></div>
-        <div><h4 class="nav_services"><a href="{% url 'logout' %}" class="nav_link ">Logout</a></h4></div>
-    </div>
-    <div class="layout">
-        <div class="nav_side">
-          <div class="nav"><a href="{% url 'admin:index' %}"><label class="btns btn1{% if request.path == '/admin' %} active {% endif %}" onclick="color_chang('btns')" > <center>Dashboard</center></label></a></div>
-          <div class="nav"><a href=""><label class="btns{% if request.path == '/Department' %} active {% endif %}"><center>Department</center></label></a></div>
-          <div class="nav"><a href="{% url 'doctor' %}"><label class="btns{% if request.path == '/doctor/' %} active {% endif %}{% if request.path == '/recievedappointmentsmark/' %} active {% endif %} {% if request.resolver_match.url_name == 'update' %} active {% endif %}{% if request.resolver_match.url_name == 'delete' %} active {% endif %} "><center>Doctor</center></label></a></div> 
-          <div class="nav"><a href="{% url 'patient' %}"><label class="btns{% if request.path == '/patient/' %} active {% endif %} {% if request.path == '/reg_patient/' %} active {% endif %} {% if request.path == '/reg_view_patient/' %} active {% endif %}{% if request.path == '/reg_update/' %} active {% endif %} {% if request.resolver_match.url_name == 'reg_update_patient/' %} active {% endif %}"><center>Patient</center></label></a></div>
-          <div class="nav"><a href="{% url 'nurse' %}"><label class="btns{% if request.path == '/nurse/' %} active {% endif %}"><center>Nurse</center></label></a></div>
-          <div class="nav"><a href="{% url 'laboratorist' %}"><label class="btns{% if request.path == '/Laboratorist/' %} active {% endif %}"><center>Laboratorist</center></label></a></div>
-          <div class="nav"><a href="{% url 'accountant' %}"><label class="btns{% if request.path == '/Accountant/' %} active {% endif %}"><center>Accountant</center></label></a></div>
-          <div class="nav"><a href="{% url 'appointment' %}"><label class="btns {% if request.path == '/appointment/' %} active {% endif %}{% if request.resolver_match.url_name == 'add_appoint' %} active {% endif %}"><center> Appointment</center></label></a></div>
-          <div class="nav"><a href="{% url 'payment' %}"><label class="btns{% if request.path == '/payment/' %} active {% endif %}"><center> Payment</center></label></a></div>
-          <div class="nav"><a href="{% url 'bedstatus' %}"><label class="btns{% if request.path == '/bedstatus/' %} active {% endif %}"><center> Bed status</center></label></a></div>
-          <div class="nav"><a href="{% url 'bloodbank' %}"><label class="btns {% if request.path == '/bloodbank/' %} active {% endif %}"><center> Blood bank</center></label></a></div>
-          <div class="nav"><a href="{% url 'medicine' %}"><label class="btns{% if request.path == '/Medicine/' %} active {% endif %}"><center> Medicine</center></label></a></div>
-            
-        </div>
+
+{% block body %}
+
+<center>   
+    
+
+<div class="medicine_container">
         
-        <div class="content scrollbar" id="style-7" style="background-color: darkslategray ">
-        <div style="position: absolute; top: 75px;left: 300px;text-decoration: underline;    font-family: 'Kanit', sans-serif; margin-top: 10px;"><h1>Medication Details</h1></div>
-            <div class="medicine_container">
-                
-                
-                <div>
-                    <h2 style="font-family: 'Kanit', sans-serif;">Medication info:</h2>
-                    <table>
-                        <tr>
-                            <td><label for=""> Patient Name: </label></td>     
-                            <td><select name="patientlist" id="">
-                                <option value="">select patient</option>
-                                <option value=""></option>
-                            </select></td>
-                        </tr>
-                <tr>
-                    <td><label for=""> Generic Name: </label></td>
-                <td><input type="text" placeholder="Optional"><br></td>
-                </tr>
-                <tr>
-                    <td><label for=""> Frequency: </label></td>
-                    <td><input type="text"placeholder="e.g., daily, twice daily"><br></td>
-                    </tr>
-                <tr>
-                    <td><label for=""> Dosage: </label></td>
-                    <td><input type="text"><br></td>
-                </tr>
-                <tr>
-                    <td><label for="">Route of administration: </label></td>
-                <td><input type="text" placeholder="e.g., oral, IV"><br></td>
-                </tr>
-                <tr>
-                    <td><label for=""> Start date: </label></td>
-                <td><input type="date"><br></td>
-                </tr>
-                <tr>
-                    <td><label for=""> End date: </label></td>
-                <td><input type="date" placeholder="optional"><br></td>
-                </tr>
-                <tr>
-                    <td><label for=""> Prescribed by: </label></td>
-                <td><input type="text" placeholder="doctor name"><br></td>
-                </tr>
-                <tr>
-                    <td><label for=""> Refills Remainnig: </label></td>
-                <td><input type="text" placeholder="optional"><br></td>
-                </tr>
-                </table>
-                </div>
-            </div>
-        
-        </div>
        
+         
+            
         <div>
-            <div style="color: #F5F5F5; text-decoration: underline; margin-top: 10px; font-family: 'Kanit', sans-serif; margin-left: 40px; "><h1>Medicine Info</h1></div>
-           
-            <div class="medicinebox" id="style-7"style=" font-family: 'Kanit', sans-serif; ">
-
-           
-            <table>
-                <tr style="position: static;">
-                    <th><select name="medicines" id="" style="margin-left: 20px; margin-top: 20px;">
-                        <option value="">Select medicine</option>
-                        <th><div style="margin-top: 20px;"><a href="{% url 'addmed'%}"><button style="border-radius: 30px;">Add new Med</button></a></div></th>
-
-
-
-                    </select></th>
-                    <th><input type="search" name="search" id="" style="margin-left: 100px;"> <button style="font-family: 'Kanit', sans-serif; margin-top: 20px;border-radius: 30px;">search</button></th>
-
-                    
-
-
+            <h2 >Medication info:</h2>
+            <table >
+                <form action="{% url 'medicine' %}" method="post">
+                {% csrf_token %}
+                    <tr>
+                    <td><label for=""> Patient Name: </label></td>     
+                    <td><select name="patientlist" required>
+                        <option value="" >select patient</option>
+                        {% if selected %}
+                        <option value="{{selected.id}}"selected>{{selected.app_Name}}</option>
+                       {% endif %}
+                        {% for patient in appointsaved %}
+                          
+                        
+                        <option value="{{patient.id}}"><pre>{{patient.app_id}} , {{patient.app_Name}} , {{patient.app_Appointed_doctor}}</pre></option>
+                        {% endfor %}
+                    </select> <button type="submit">OK</button></td>
                 </tr>
+                </form>
+                {% if selected %}
+                  
+                
+                <form action="{% url 'med2' selected.id %}" method="get">
+                 
+                    {% endif %}
+        <tr>
+            <td><label for=""> Generic Name: </label></td>
+        <td><input type="text" placeholder="Optional" name="generic_name" required><br></td>
+        </tr>
+        <tr>
+            <td><label for=""> Frequency: </label></td>
+            <td><input type="text"placeholder="e.g., daily, twice daily" name="frequency" required><br></td>
+            </tr>
+        <tr>
+            <td><label for=""> Days: </label></td>
+            <td><input type="text" name="dosage" required><br></td>
+        </tr>
+        <script>
+            const today = new Date().toISOString().split('T')[0];
+            
+        </script>
+        <tr>
+            <td><label for="">Route of administration: </label></td>
+        <td><input type="text" placeholder="e.g., oral, IV" name="route"><br></td>
+        </tr>
+        <tr>
+            <td><label for=""> Start date: </label></td>
+        <td><input type="date" value="{{ selected.app_startdate|date:'Y-m-d' }}" name="start_date"><br></td>
+        </tr>
+       
+        <tr>
+            <td><label for=""> End date: </label></td>
+        <td><input type="date" placeholder="optional" name="end_date"><br></td>
+        </tr>
+        <tr>
+            <td><label for=""> Prescribed by: </label></td>
+        <td><input type="text" placeholder="doctor name" value="{{selected.app_Appointed_doctor}}" name="priscribedby"><br></td>
+        </tr>
+        <tr>
+            <td><label for=""> Refills Remainnig: </label></td>
+        <td><input type="text" placeholder="optional" name="refills_remainging"><br></td>
+        
+        </tr>
+        <tr>
+            <th>
+                Priscription:
+
+            </th>
+            <th><textarea id="" cols="21" rows="4" name="Priscription">{{selected.app_doctor_priscription}}</textarea></th>
+
+        </tr>
+    
+        <tr>
+            <th><button type="submit"style=" margin-top: 20px;border-radius: 30px;background-color: darkslategray;color:white">OK</button></th>
 
 
-
-
-
-
-            </table>
-
-
-
-
-            </div>            
+        </tr>
+    </form>
+        </table>
         </div>
-
-
-
-
+    
     </div>
 
-     <div class="footer_arange">
-        <footer class="section footer-classic context-dark bg-image dark text-light " style="background: #2d3246;">
-            <div class="container">
-              <div class="row row-30">
-                <div class="col-md-4 col-xl-5">
-                  <div class="pr-xl-4">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias nulla optio ducimus suscipit quibusdam possimus ex tempore doloremque earum libero!</p>
-                    <!-- Rights-->
-                    <p class="rights"><span>©  </span><span class="copyright-year">2020</span><span> </span><span>Company</span><span> - </span><span>All Rights Reserved.</span></p>
-                  </div>
-                </div>
-                <div class="col-md-4 text-light">
-                  <h5>Contacts</h5>
-                  <dl class="contact-list text-light">
-                    <dt>Address:</dt>
-                    <dd>798 South Park Avenue, New York, USA</dd>
-                  </dl>
-                  <dl class="contact-list text-light">
-                    <dt>email:</dt>
-                    <dd><a href="mailto:#"class="text-light">compagny@email.com</a></dd>
-                  </dl>
-                  <dl class="contact-list text-light">
-                    <dt>phones:</dt>
-                    <dd><a href="tel:#"class="text-light">1.555.652.258</a> <span>or</span> <a href="tel:#"class="text-light">1.55.652.268</a>
-                    </dd>
-                  </dl>
-                </div>
-                <div class="col-md-4 col-xl-3">
-                  <h5>Links</h5>
-                  <ul class="nav-list text-light">
-                    <li><a href="#"class="text-light">About</a></li>
-                    <li><a href="#"class="text-light">Projects</a></li>
-                    <li><a href="#"class="text-light">Blog</a></li>
-                    <li><a href="#"class="text-light">Contacts</a></li>
-                    <li><a href="#"class="text-light">Pricing</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="row no-gutters social-container">
-              <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook "></span><span class="text-light">Facebook</span></a></div>
-              <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span class="text-light">Instagram</span></a></div>
-              <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span class="text-light">Twitter</span></a></div>
-              <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span class="text-light">Youtube</span></a></div>
-            </div>
-          </footer>
-        </div>
+</div>
 
+</center>
+             
 
+{% endblock %}
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>

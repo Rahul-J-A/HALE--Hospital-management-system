@@ -1,0 +1,109 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title%}HALE |Department {% endblock %}</title>
+  {% block css %}
+  <style>
+   body{
+    background-color: rgb(74, 128, 128);
+   }
+   .center_edit{
+            margin-left: 20px;
+        }
+  .content{
+    
+   
+    display:grid;
+    width: 1250px;
+             grid-template-columns: 200px 200px 200px 200px 200px 200px ;
+            grid-template-rows: 250px ; 
+            grid-column:2/13;
+            grid-row:1/13;
+            /* grid-template-columns: 950px; */
+            
+            /* height: 50px;
+            width: 50px; */
+            background-color: rgb(74, 128, 128);
+  }
+  .center_nav1{
+            width: 140px;
+            height: 100px;
+            border: 1px solid red;
+            border-radius: 30px;
+            background-color: darkslategrey;
+            /* background-color: aquamarine; */
+            
+        }
+        
+        .btns2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 50px;
+            width: 100px;
+            height: 100px;
+            border-radius: 30px;
+            margin-left: 50px;
+        }
+        .btns2{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 50px;
+            width: 140px;
+            height: 100px;
+            border-radius: 30px;
+            margin-left: 50px;
+        }
+        .btns2:hover{
+          background-color:#AAD9BB
+        }
+       
+</style>
+  
+  {% endblock %}
+</head>
+<body>
+  
+{% block body %}
+<div class="content_container" >
+  <div><a href="{% url 'add_department' %}"><button style="margin: 20px; background-color: darkslategrey; color: aliceblue; border-radius: 30px;">Add Department</button></a></div>
+  
+  
+ 
+    
+  
+  <div class="content">
+    {% for dept in alldata %}
+      <div class="center_nav1 center_edit"><a href="{% url 'detailed_department' dept.id %}">
+        
+                 
+                 <center> <button class="center_nav1 " style="color: aliceblue; font-weight: bold;">  {{dept.dept_name}}</button> </center>
+          
+            </a>
+            
+                </div>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+
+    
+
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}
+</body>
+</html>
+

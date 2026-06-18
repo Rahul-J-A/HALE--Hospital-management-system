@@ -1,0 +1,80 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |Medication Details {% endblock %}</title>
+{% block css%}
+<style>
+    table,th,td{
+        margin-top: 10px;
+        color: aliceblue;
+        font-family: 'Tektur', sans-serif;
+        border: 1px solid white;
+    }
+.detail_box{
+    background-color: darkslategrey;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 30px;
+    height: 585px;
+    width:max-content;
+}
+    
+</style>
+{% endblock %}
+</head>
+<body>
+    {% block body %}
+<center>
+    <div class="detail_box">
+    <table cellpadding="8px">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Description</th>
+            <th>DoctorVisited</th>
+            <th>Department</th>
+            <th>OP</th>
+            <th>Medicine</th>
+            <th>startDate</th>
+            <th>EndDate</th>
+            <th>Presciption</th>
+            <th>Dosage</th>
+            <th>Frequency</th>
+
+
+        </tr>
+       {% for data in alldetails %}
+        <tr>
+            <th>{{data.app_id}}</th>
+            <th>{{data.app_Name}}</th>
+            <th>{{data.app_age}}</th>
+            <th>{{data.app_gender}}</th>
+            <th>{{data.app_discription}}</th>
+            <th>{{data.app_Appointed_doctor}}</th>
+            <th>{{data.app_department}}</th>
+            <th>{{data.app_op_no}}</th>
+            <th>{{data.app_medicine}}</th>
+            <th>{{data.app_startdate}}</th>
+            <th>{{data.app_enddate}}</th>
+            <th>{{data.app_doctor_priscription}}</th>
+            <th>{{data.app_dosage}}</th>
+            <th>{{data.app_frequency}}</th>
+
+
+
+        </tr>
+
+    {% endfor %}
+    </table>
+</div>
+</center>
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,95 @@
+{% extends "nav.html " %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}HALE |Staffs {% endblock %}</title>
+
+{% block css %}
+<style>
+body{
+    color: aliceblue;
+    font-family: 'Tektur', sans-serif;
+        
+}
+table,th,td{
+        color: aliceblue;
+        
+        border: 1px solid white;
+    }
+
+.btn{
+    border-radius: 30px;
+    background-color: darkslategrey;
+    margin: 30px;
+    color: aliceblue;
+}
+.btn2{
+    border-radius: 30px;
+    background-color: darkslategrey;
+   
+    color: aliceblue;
+}
+.box{
+    background-color: darkslategrey;
+    width: 950px;
+    padding: 10px;
+    border-radius: 30px;
+}
+</style>
+
+
+{% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div><a href="{% url 'staff_add' %}"><button class="btn">Register</button></a></div>
+    <center>
+        <div class="box">
+ <table cellpadding="20px">
+    <tr>
+
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Designation</th>
+        <th>PhoneNo</th>
+        <th>Address</th>
+        <Th>Modify</Th>
+        <Th>Modify</Th>
+
+
+    </tr>
+    {% for data in alldata %}
+      
+  
+    <tr>
+        <th>{{data.staff_name}}</th>
+        <th>{{data.staff_age}}</th>
+        <th>{{data.staff_gender}}</th>
+        <th>{{data.staff_role}}</th>
+        <th>{{data.staff_phone_no}}</th>
+        <th>{{data.staff_address}}</th>
+        <th> <a href="{% url 'update_staff' data.id %}"><button class="btn2">Update</button></a></th>
+        <th> <a href="{% url 'delete_staff' data.id %}"><button class="btn2">Delete</button></a></th>
+
+    </tr>
+    {% endfor %}
+
+
+
+ </table>
+
+
+</div>
+
+</center>
+
+
+      
+    {% endblock  %}
+    <table></table>
+</body>
+</html>

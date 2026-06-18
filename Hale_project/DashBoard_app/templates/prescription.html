@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Priscription</title>
+    <style>
+        .centered-div{
+            width: max-content;
+            margin: auto;
+            color: rgb(41, 15, 239);
+        }
+        .container {
+    display: flex;
+    line-height: 0px;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 4px solid #000;
+        }
+        .corner-div {
+   
+    padding: 20px; 
+}
+
+.left {
+    margin-top: auto; 
+}
+
+.right {
+    margin-top: auto; 
+}
+
+#date-container {
+  position: fixed; 
+  top: 0px; 
+  right: 80px;
+}
+
+.tab_med{
+    margin: 0 auto;
+  width: 500px;
+}
+#tab_head td{
+    border-bottom: 2px solid #000;
+    border-top: 2px solid #000;
+    
+}
+.sign{
+    float: right;
+    width: 150px;
+    
+}
+
+.btns{
+    margin-left: 1200px;
+}
+.box{
+    border-top: 5px solid #000;
+}
+    </style>
+    
+    <script>
+
+        function setDefaultDate() {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput = document.getElementById('dateInput');
+            console.log(today);
+            console.log(dateInput.value);
+            if (!dateInput.value) {
+                dateInput.value = today;
+            }
+        }
+
+        function prints(){
+
+        }
+    </script>
+      
+   
+</head>
+<body onload="setDefaultDate()">
+    
+    <div id="date-container">
+        <pre>Date:  <input type="date" id="dateInput" style="text-decoration: none;"readonly></pre>
+    
+    </div>
+    <div>
+        
+        <div class="centered-div">
+            <h1>PRISCRIPTION</h1>
+        </div>
+        <div class="container">
+            <div class="corner-div left">
+                <b>Doctor Name : &nbsp;&nbsp;&nbsp;{{data.app_Appointed_doctor}}    </b>
+                <p> Reg No:&nbsp;&nbsp;{{data.app_doctor_id}}</p>
+                <p>Email:&nbsp;&nbsp;djangoemail0000@gmail.com</p>
+            </div>
+            <div class="corner-div right">
+                <b>HALE </b>
+                <p>A TRUSTED WELFARE BRANCH,</p>
+                <p> MAKES LIFE EASY.</p>
+            </div>
+        </div>
+        <div class="patient_detail">
+            <h4>ID &nbsp;&nbsp;{{data.id}}</h4>
+            <table>
+                <tr>
+                    <td>Name :</td>
+                    <td>{{data.app_Name}}</td>
+                </tr>
+                <tr>
+                    <td>Address :</td>
+                    <td>{{patient_detail.patient_address}}</td>
+                </tr>
+                
+            </table>
+            <br><br>
+            
+            
+
+        </div>
+        
+          
+           <table class="tab_med">
+            <tr id="tab_head">
+                <td><b>Medicine Name</b></th>
+                <td><b>Dosage</b></th>
+                <td><b>Duration</b></th>
+            </tr>
+    <form action="" method="post">
+            {% csrf_token %}
+            <tr>
+                <td><textarea name="medicine_priscribed"  cols="30" rows="5">{{ data.app_medicine_priscribed}}</textarea></td>
+            <td><textarea name="medicine_dosage"  cols="30" rows="5">{{data.app_medicine_dosage}}</textarea></td>
+             <td><textarea name="medicine_duration"  cols="30" rows="5">{{data.app_medicine_duration}}</textarea></td>   
+            </tr>
+            
+        
+
+           </table>
+           <h4>Advice Given:</h4>
+           <textarea name="advice_given"  cols="30" rows="5">{{data.app_advice_given}}</textarea>
+           <div class="box">
+    
+                            <table>
+                <tr>
+           <th>Fee:</th>
+        </tr>
+        <tr>
+          <th> <input type="number" name="fees"  placeholder="Total fees" value="{{data.app_fee}}"></th>
+        </tr>
+        </table>
+  
+
+            <div class="btns"><button type="submit">OK</button>
+            <button onclick="window.print()">Print</button></div>
+        </div>
+        </form>
+        </div>
+        <div class="sign">
+    </div>
+</body>
+</html>
